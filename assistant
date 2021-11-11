@@ -1,0 +1,5 @@
+const app = require('./bootstrap/app')
+let kernel = app.make('@ostro/contracts/console/kernel');
+kernel.handle(
+	process.argv.slice(2),
+)
