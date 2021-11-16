@@ -1,9 +1,8 @@
 {
   "name": "@ostro/ostro",
-  "version": "0.0.0-alpha.0",
-  "engines": {
-    "node": ">= 12.0"
-  },
+  "version": "0.0.0-alpha.1",
+  "private": true,
+  "description" : "OstroJS MVC framework",
   "scripts": {
     "dev": "npm run development",
     "development": "mix",
@@ -14,7 +13,7 @@
     "production": "mix --production"
   },
   "dependencies": {
-    "@ostro/framework": "^0.0.0-alpha.0"
+    "@ostro/framework": "^0.0.0-alpha"
   },
   "devDependencies": {
     "@popperjs/core": "^2.10.2",
