@@ -2,7 +2,10 @@
   "name": "@ostro/ostro",
   "version": "0.0.0-alpha.1",
   "private": true,
-  "description" : "OstroJS MVC framework",
+  "description" : "OstroJS MVC framework for NodeJS",
+  "keywords": ["framework", "ostrojs", "mvc"],
+  "author": "amar",
+  "license": "MIT",
   "scripts": {
     "dev": "npm run development",
     "development": "mix",
