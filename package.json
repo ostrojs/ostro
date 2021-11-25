@@ -1,7 +1,6 @@
 {
   "name": "@ostro/ostro",
-  "version": "0.0.0-alpha.1",
-  "private": true,
+  "version": "0.0.0-alpha.2",
   "description" : "OstroJS MVC framework for NodeJS",
   "keywords": ["framework", "ostrojs", "mvc"],
   "author": "amar",
@@ -24,5 +23,17 @@
     "laravel-mix": "^6.0.6",
     "lodash": "^4.17.19",
     "postcss": "^8.1.14"
-  }
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "engineStrict": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ostrojs/ostro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ostrojs/ostro/issues"
+  },
+  "homepage": "https://github.com/ostrojs/ostro#readme"
 }
