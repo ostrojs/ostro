@@ -1,6 +1,9 @@
 module.exports = {
+    
     'default': env('FILESYSTEM_DRIVER', 'local'),
+
     'cloud': env('FILESYSTEM_CLOUD', 's3'),
+    
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
@@ -10,7 +13,7 @@ module.exports = {
     | may even configure multiple disks of the same driver. Defaults have
     | been setup for each driver as an example of the required options.
     |
-    | Supported Drivers: "local", "azure", "icms"
+    | Supported Drivers: "local", "azure", "s3"
     |
     */
     'disks': {
