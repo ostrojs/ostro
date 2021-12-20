@@ -15,6 +15,29 @@ module.exports = {
 
     /*
     |--------------------------------------------------------------------------
+    | Application Port
+    |--------------------------------------------------------------------------
+    |
+    | Application needs to identify on which port server is running.
+    |
+    */
+
+    'port': env('APP_PORT', 8080),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Host
+    |--------------------------------------------------------------------------
+    |
+    | Application needs to identify on which host server is running.
+    |
+    */
+
+    'host': env('APP_HOST', '127.0.0.1'),
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |
@@ -52,7 +75,19 @@ module.exports = {
 
     'url': env('APP_URL', 'http://localhost'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Application Asset URL
+    |--------------------------------------------------------------------------
+    |
+    | Whenever you wanted to use asset_url helpers function in view you can
+    | set you own asset url endpoint.
+    |
+    */
+
     'asset_url': env('ASSET_URL', null),
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -60,7 +95,7 @@ module.exports = {
     |--------------------------------------------------------------------------
     |
     | The default timezone for your application, which will be utilised by the
-    | PHP date and date-time functions, may be set here. We've set this to a
+    | NodeJS date and date-time functions, may be set here. We've set this to a
     | suitable setting for you right out of the box.
     |
     */
