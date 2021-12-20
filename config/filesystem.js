@@ -17,33 +17,16 @@ module.exports = {
     |
     */
     'disks': {
+        
         'local': {
             'driver': 'local',
             'root': storage_path('app'),
             'encoding': 'utf8',
         },
 
-        'session': {
-            'driver': 'local',
-            'root': storage_path('session'),
-            'encoding': 'utf8',
-        },
-
-        'xslt': {
-            'driver': 'local',
-            'root': storage_path('xslt'),
-            'encoding': 'utf8'
-        },
-
         'public': {
             'driver': 'local',
             'root': public_path(''),
-            'encoding': 'utf8',
-        },
-
-        'view': {
-            'driver': 'local',
-            'root': view_path(''),
             'encoding': 'utf8',
         },
 
