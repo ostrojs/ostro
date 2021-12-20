@@ -37,7 +37,7 @@ module.exports =  {
     |
     | This option allows you to easily specify that all of your session data
     | should be encrypted before it is stored. All encryption will be run
-    | automatically by OstroJS and you can use the Session like normal.
+    | automatically by Laravel and you can use the Session like normal.
     |
     */
 
@@ -83,6 +83,21 @@ module.exports =  {
     */
 
     'table' : 'sessions',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Cache Store
+    |--------------------------------------------------------------------------
+    |
+    | While using one of the framework's cache driven session backends you may
+    | list a cache store that should be used for these sessions. This value
+    | must match with one of the application's configured cache "stores".
+    |
+    | Affects: "apc", "dynamodb", "memcached", "redis"
+    |
+    */
+
+    'store' : env('SESSION_STORE', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -161,6 +176,21 @@ module.exports =  {
     */
 
     'http_only' : true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Same-Site Cookies
+    |--------------------------------------------------------------------------
+    |
+    | This option determines how your cookies behave when cross-site requests
+    | take place, and can be used to mitigate CSRF attacks. By default, we
+    | will set this value to "lax" since this is a secure default value.
+    |
+    | Supported: "lax", "strict", "none", null
+    |
+    */
+
+    'same_site' : 'lax',
 
     'resave': false,
 

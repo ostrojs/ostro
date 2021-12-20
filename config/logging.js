@@ -7,7 +7,7 @@ module.exports =  {
     |
     | This option defines the default log channel that gets used when writing
     | messages to the logs. The name specified in this option should match
-    | one of the channels defined in the "channels" configuration object.
+    | one of the channels defined in the "channels" configuration array.
     |
     */
     'default' : env('LOG_CHANNEL', 'stack'),
@@ -17,12 +17,14 @@ module.exports =  {
     | Log Channels
     |--------------------------------------------------------------------------
     |
-    | Here you may configure the log channels for your application. 
+    | Here you may configure the log channels for your application. Out of
+    | the box, Laravel uses the Monolog PHP logging library. This gives
+    | you a variety of powerful log handlers / formatters to utilize.
+    |
     | Available Drivers: "single", "daily", "syslog", "custom", "stack", "console"
     |
     */
     'channels' : {
-
         'stack' : {
             'driver' : 'stack',
             'channels' : ['single'],
