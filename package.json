@@ -1,6 +1,6 @@
 {
   "name": "@ostro/ostro",
-  "version": "0.0.0-alpha.4",
+  "version": "0.0.0-alpha.5",
   "description" : "OstroJS MVC framework for NodeJS",
   "keywords": ["framework", "ostrojs", "mvc", "MVC framework", "nodejs framework"],
   "author": "amar",
