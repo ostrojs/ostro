@@ -7,34 +7,30 @@ class Kernel extends HttpKernel {
      *
      * @var array
      */
-    get $defaultMiddlewares() {
-        return [
-            require('@ostro/http/middleware/crossOrigin'),
-            require('@ostro/http/middleware/compression'),
-            require('@ostro/http/middleware/serveStatic'),
-            require('@ostro/http/middleware/bodyParserJson'),
-            require('@ostro/http/middleware/bodyParserUrlEncoded'),
-            require('@ostro/http/middleware/formParser'),
-            require('@ostro/http/middleware/queryParser'),
-            require('@ostro/auth/middleware/startAuth'),
-        ]
-    }
+    $defaultMiddlewares = [
+        require('@ostro/http/middleware/crossOrigin'),
+        require('@ostro/http/middleware/compression'),
+        require('@ostro/http/middleware/serveStatic'),
+        require('@ostro/http/middleware/bodyParserJson'),
+        require('@ostro/http/middleware/bodyParserUrlEncoded'),
+        require('@ostro/http/middleware/formParser'),
+        require('@ostro/http/middleware/queryParser'),
+        require('@ostro/auth/middleware/startAuth'),
+    ];
 
     /**
      * The application's route middleware groups.
      *
      * @var array
      */
-    get $middlewareGroups() {
-        return {
-            'web': [
-                require('@ostro/cookie/middleware/cookieParser'),
-                require('@ostro/session/middleware/startSession'),
-                require('~/app/http/middleware/verifyCsrfToken'),
-            ]
+    $middlewareGroups = {
+        'web': [
+            require('@ostro/cookie/middleware/cookieParser'),
+            require('@ostro/session/middleware/startSession'),
+            require('~/app/http/middleware/verifyCsrfToken'),
+        ]
+    };
 
-        }
-    }
 
     /**
      * The application's route middleware.
@@ -43,12 +39,10 @@ class Kernel extends HttpKernel {
      *
      * @var array
      */
-    get $namedMiddlewares() {
-        return {
-            'guest': require('~/app/http/middleware/redirectIfAuthenticated'),
-            'auth': require('~/app/http/middleware/authenticate'),
-        }
-    }
+    $namedMiddlewares = {
+        'guest': require('~/app/http/middleware/redirectIfAuthenticated'),
+        'auth': require('~/app/http/middleware/authenticate')
+    };
 
 }
 
