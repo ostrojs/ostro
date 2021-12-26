@@ -4,7 +4,9 @@ class VerifyCsrfToken extends Middleware{
 	
     $addHttpCookie = true;
 
-    $except = [];
+    $except = [
+
+    ];
 }
 
 module.exports = VerifyCsrfToken ;

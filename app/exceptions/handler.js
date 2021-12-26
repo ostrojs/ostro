@@ -2,7 +2,9 @@ const ExceptionHandler = require('@ostro/foundation/exception/handler');
 
 class Handler extends ExceptionHandler {
 
-    $dontReport = [];
+    $dontReport = [
+
+    ];
     
     $dontFlash = [
         'current_password',
