@@ -37,7 +37,7 @@ module.exports = {
             'foreign_key_constraints': env('DB_FOREIGN_KEYS', true),
         },
         'mysql': {
-            'driver': 'mysql',
+            'driver': 'mysql', // mysql or mysql2
             'host': env('DB_HOST', '127.0.0.1'),
             'port': env('DB_PORT', '3306'),
             'database': env('DB_DATABASE', 'forge'),
