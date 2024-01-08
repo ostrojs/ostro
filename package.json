@@ -1,6 +1,6 @@
 {
   "name": "@ostro/ostro",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description" : "OstroJS MVC framework for NodeJS",
   "keywords": ["framework", "ostrojs", "mvc", "MVC framework", "nodejs framework"],
   "author": "amar",
@@ -15,7 +15,7 @@
     "production": "mix --production"
   },
   "dependencies": {
-    "@ostro/framework": "^1.0.1"
+    "@ostro/framework": "^1.2.0"
   },
   "devDependencies": {
     "@popperjs/core": "^2.10.2",
