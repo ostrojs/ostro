@@ -5,87 +5,87 @@ module.exports = {
     | Default Database Connection Name
     |--------------------------------------------------------------------------
     |
-    | Here you may specify which of the database connections below you wish
-    | to use as your default connection for all database work. Of course
-    | you may use many connections at once using the Database library.
+    | Specify which database connection below to use as the default connection
+    | for all database operations in OstroJS. You may define multiple 
+    | connections and use them as needed.
     |
     */
    
-    'default': env('DB_CONNECTION', 'sqlite'),
+    default: env('DB_CONNECTION', 'sqlite'),
 
     /*
     |--------------------------------------------------------------------------
     | Database Connections
     |--------------------------------------------------------------------------
     |
-    | Here are each of the database connections setup for your application.
-    | Of course, examples of configuring each database platform that is
-    | supported by Laravel is shown below to make development simple.
+    | Define the database connection configurations for your application.
+    | Examples include sqlite, mysql, pgsql, and sqlsrv. OstroJS uses node
+    | database drivers like 'mysql2', 'pg', or 'mssql'.
     |
-    |
-    | All database work in Laravel is done through the PHP PDO facilities
-    | so make sure you have the driver for your particular database of
-    | choice installed on your machine before you begin development.
+    | Ensure the required Node.js drivers are installed in your project.
     |
     */
    
-    'connections': {
-        'sqlite': {
-            'driver': 'sqlite',
-            'url': env('DATABASE_URL'),
-            'database': env('DB_DATABASE', database_path('database.sqlite')),
-            'foreign_key_constraints': env('DB_FOREIGN_KEYS', true),
+    connections: {
+        sqlite: {
+            driver: 'sqlite',
+            url: env('DATABASE_URL'),
+            database: env('DB_DATABASE', path.resolve('database.sqlite')),
+            foreignKeyConstraints: env('DB_FOREIGN_KEYS', true),
         },
-        'mysql': {
-            'driver': 'mysql', // mysql or mysql2
-            'host': env('DB_HOST', '127.0.0.1'),
-            'port': env('DB_PORT', '3306'),
-            'database': env('DB_DATABASE', 'forge'),
-            'user': env('DB_USERNAME', 'forge'),
-            'password': env('DB_PASSWORD', '')
+        mysql: {
+            driver: 'mysql', // Use 'mysql2' driver package in Node.js environment
+            host: env('DB_HOST', '127.0.0.1'),
+            port: Number(env('DB_PORT', 3306)),
+            database: env('DB_DATABASE', 'forge'),
+            user: env('DB_USERNAME', 'forge'),
+            password: env('DB_PASSWORD', ''),
         },
-        'pgsql': {
-            'driver': 'pgsql',
-            'url': env('DATABASE_URL'),
-            'host': env('DB_HOST', '127.0.0.1'),
-            'port': env('DB_PORT', '5432'),
-            'database': env('DB_DATABASE', 'forge'),
-            'username': env('DB_USERNAME', 'forge'),
-            'password': env('DB_PASSWORD', ''),
-            'charset': 'utf8',
-            'prefix': '',
-            'prefix_indexes': true,
-            'schema': 'public',
-            'sslmode': 'prefer',
+        pgsql: {
+            driver: 'pg', // PostgreSQL driver package for Node.js
+            url: env('DATABASE_URL'),
+            host: env('DB_HOST', '127.0.0.1'),
+            port: Number(env('DB_PORT', 5432)),
+            database: env('DB_DATABASE', 'forge'),
+            user: env('DB_USERNAME', 'forge'),
+            password: env('DB_PASSWORD', ''),
+            charset: 'utf8',
+            schema: 'public',
+            ssl: { rejectUnauthorized: false }, // SSL config for pg driver
         },
-        'sqlsrv': {
-            'driver': 'sqlsrv',
-            'url': env('DATABASE_URL'),
-            'host': env('DB_HOST', 'localhost'),
-            'port': env('DB_PORT', '1433'),
-            'database': env('DB_DATABASE', 'forge'),
-            'username': env('DB_USERNAME', 'forge'),
-            'password': env('DB_PASSWORD', ''),
-            'charset': 'utf8',
-            'prefix': '',
-            'prefix_indexes': true,
+        sqlsrv: {
+            driver: 'mssql', // Microsoft SQL Server Node.js driver
+            url: env('DATABASE_URL'),
+            host: env('DB_HOST', 'localhost'),
+            port: Number(env('DB_PORT', 1433)),
+            database: env('DB_DATABASE', 'forge'),
+            user: env('DB_USERNAME', 'forge'),
+            password: env('DB_PASSWORD', ''),
+            charset: 'utf8',
         },
     },
 
-    'migration_path': database_path('migrations'),
-    
-    'seeder_path': database_path('seeders'),
+    /*
+    |--------------------------------------------------------------------------
+    | Migration & Seeder Paths
+    |--------------------------------------------------------------------------
+    |
+    | Define the paths for migration and seeder scripts relative to the 
+    | project root. OstroJS migration system will use these locations.
+    |
+    */
+    migrationPath: path.resolve('database/migrations'),
+    seederPath: path.resolve('database/seeders'),
 
     /*
     |--------------------------------------------------------------------------
     | Migration Repository Table
     |--------------------------------------------------------------------------
     |
-    | This table keeps track of all the migrations that have already run for
-    | your application. Using this information, we can determine which of
-    | the migrations on disk haven't actually been run in the database.
+    | This table keeps track of all migrations that have been run in the
+    | database so that migrations aren't run twice. OstroJS will use this.
     |
     */
-    'migrations': 'migrations',
+    migrationsTable: 'migrations',
 
-}
+};
