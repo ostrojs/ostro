@@ -17,7 +17,7 @@ module.exports = {
     | Cache enable behavior
     |--------------------------------------------------------------------------
     |
-    | This option defines to enable and disable cach.
+    | This option defines to enable and disable cache.
     |
     */
     'enabled': env('CACHE_ENABLE', true),
@@ -27,7 +27,7 @@ module.exports = {
     | cache storess
     |--------------------------------------------------------------------------
     |
-    | Here you may configure the cache storess for your application. 
+    | Here you may configure the cache stores for your application. 
     |
     | Available Drivers: "memory", "database", "file", "redis"
     |
