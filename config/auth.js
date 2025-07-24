@@ -12,7 +12,7 @@ module.exports = {
     */
 
     'defaults': {
-        'guard': 'web',
+        'guard': 'web', // Default guard that will be used for authentication requests
     },
 
     /*
@@ -35,14 +35,14 @@ module.exports = {
     'guards': {
 
         'web': {
-            'driver': 'session',
-            'provider': 'users',
+            'driver': 'session', // Uses sessions to maintain user state
+            'provider': 'users', // Refers to the provider that will fetch user data
         },
 
         'api': {
-            'driver': 'token',
-            'provider': 'users',
-            'hash': false,
+            'driver': 'token', // Uses simple token-based authentication
+            'provider': 'users', // Shares the same provider as the 'web' guard
+            'hash': false, // Disables hashing for tokens (not recommended for production)
         },
     },
 
@@ -66,8 +66,8 @@ module.exports = {
     'providers': {
 
         'users': {
-            'driver': 'eloquent',
-            'model': require('~/app/models/user'),
+            'driver': 'eloquent', // Indicates the use of Eloquent ORM for user retrieval
+            'model': require('~/app/models/user'), // The model that represents application users
         },
 
     }
