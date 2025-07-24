@@ -5,13 +5,14 @@ module.exports = {
     | Authentication Defaults
     |--------------------------------------------------------------------------
     |
-    | Controls the default authentication guard and password reset options.
-    | You can modify these defaults to suit your app's needs.
-    | The default guard is used for all authentication requests unless overridden.
+    | Defines the default authentication guard and password reset options.
+    | The guard determines how users are authenticated for each request.
+    | By default, this is set to 'web', which typically uses session-based auth.
+    | You can change this to another guard like 'api' if needed.
     |
     */
     'defaults': {
-        'guard': 'web', // Default guard for handling authentication (session-based)
+        'guard': 'web',
     },
 
     /*
@@ -19,25 +20,24 @@ module.exports = {
     | Authentication Guards
     |--------------------------------------------------------------------------
     |
-    | Defines all authentication guards available in your application.
-    | Guards specify how users are authenticated for each request.
-    | Examples include session-based or token-based authentication.
-    | Each guard references a user provider which retrieves the user info.
-    |
-    | Supported drivers: "session" (stateful), "token" (stateless API tokens)
+    | Guards define how users are authenticated for each request.
+    | Each guard uses a driver like 'session' or 'token' and a user provider.
+    | 'session' guard is for typical web authentication via sessions.
+    | 'token' guard is usually for API authentication using tokens.
+    | You can define multiple guards if your app requires different auth methods.
     |
     */
     'guards': {
 
         'web': {
-            'driver': 'session', // Maintains user state via sessions (for web apps)
-            'provider': 'users', // Specifies which user provider to use for fetching user info
+            'driver': 'session',      // Uses session storage to maintain login state
+            'provider': 'users',      // User provider that retrieves users for this guard
         },
 
         'api': {
-            'driver': 'token', // Uses tokens for stateless API authentication
-            'provider': 'users', // Uses the same user provider as 'web'
-            'hash': false, // Token hashing disabled (not recommended for production)
+            'driver': 'token',        // Uses token-based authentication (e.g., API tokens)
+            'provider': 'users',
+            'hash': false,            // Whether to hash API tokens before comparison
         },
     },
 
@@ -46,18 +46,17 @@ module.exports = {
     | User Providers
     |--------------------------------------------------------------------------
     |
-    | Defines how user data is retrieved from storage.
-    | Can be connected to a database or ORM model.
-    | You may configure multiple providers if you have different user types.
-    |
-    | Supported drivers: "database" (direct DB queries), "eloquent" (ORM models)
+    | User providers define how user data is retrieved from your data source.
+    | This can be via an ORM model (like Eloquent) or direct database queries.
+    | You can configure multiple providers if you have different user tables/models.
+    | Each guard references one of these providers to fetch user info.
     |
     */
     'providers': {
 
         'users': {
-            'driver': 'eloquent', // Uses ORM models to fetch users
-            'model': require('~/app/models/user'), // Path to the user model class
+            'driver': 'eloquent',        // Uses an ORM model to retrieve users
+            'model': require('~/app/models/user'),  // Path to the User model class
         },
 
     }
