@@ -5,39 +5,43 @@ module.exports = {
     | Default Hash Driver
     |--------------------------------------------------------------------------
     |
-    | Specifies the default hashing algorithm to use for passwords or sensitive data.
-    | Supported drivers:
-    | - "bcrypt": Strong adaptive password hashing.
-    | - "crypto": Uses Node.js crypto module (e.g., SHA256). Faster but less secure for passwords.
+    | Specifies which hashing driver your application will use by default to
+    | hash passwords or other sensitive data. You can choose between strong
+    | adaptive hashing like "bcrypt" or a more general-purpose "crypto" driver.
+    |
+    | Supported: "bcrypt", "crypto"
     |
     */
-    'driver': 'crypto',
+    'driver' : 'crypto',
 
     /*
     |--------------------------------------------------------------------------
     | Bcrypt Options
     |--------------------------------------------------------------------------
     |
-    | Options for the bcrypt algorithm. The "rounds" value controls the cost factor,
-    | increasing security but also CPU usage. Recommended range is 8-12.
+    | Configuration options specifically for the bcrypt driver. The "rounds"
+    | setting controls the cost factor — the higher the number, the more
+    | computationally expensive the hash function is, thus providing better
+    | security at the expense of performance.
     |
     */
-    'bcrypt': {
-        'rounds': env('BCRYPT_ROUNDS', 8),
+    'bcrypt' : {
+        'rounds' : env('BCRYPT_ROUNDS', 8),
     },
-
+    
     /*
     |--------------------------------------------------------------------------
     | Crypto Options
     |--------------------------------------------------------------------------
     |
-    | Options for the crypto driver. The "rounds" value can control iterations or
-    | key stretching depending on implementation. Usually faster but less secure
-    | than bcrypt for password hashing.
+    | Configuration options for the generic crypto driver. The "rounds" here
+    | might define iteration count or key stretching rounds, depending on
+    | the underlying algorithm used. Usually faster but less secure for
+    | password storage compared to bcrypt.
     |
     */
-    'crypto': {
-        'rounds': env('CRYPTO_ROUNDS', 10),
+    'crypto' : {
+        'rounds' : env('BCRYPT_ROUNDS', 10),
     }
-
+    
 }
