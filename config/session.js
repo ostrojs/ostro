@@ -5,9 +5,9 @@ module.exports =  {
     | Default Session Driver
     |--------------------------------------------------------------------------
     |
-    | This option controls the default session "driver" that will be used on
-    | requests. By default, we will use the lightweight native driver but
-    | you may specify any of the other wonderful drivers provided here.
+    | Controls the default session driver used for handling user sessions.
+    | The default is a lightweight file-based driver, but others like
+    | database, cache, or memory can be used.
     |
     | Supported: "file", "database", "cache", "memory"
     |
@@ -20,9 +20,8 @@ module.exports =  {
     | Session Lifetime
     |--------------------------------------------------------------------------
     |
-    | Here you may specify the number of minutes that you wish the session
-    | to be allowed to remain idle before it expires. If you want them
-    | to immediately expire on the browser closing, set that option.
+    | The number of minutes a session can remain idle before it expires.
+    | To expire sessions immediately on browser close, set 'expire_on_close'.
     |
     */
 
@@ -35,9 +34,8 @@ module.exports =  {
     | Session Encryption
     |--------------------------------------------------------------------------
     |
-    | This option allows you to easily specify that all of your session data
-    | should be encrypted before it is stored. All encryption will be run
-    | automatically by Laravel and you can use the Session like normal.
+    | If set to true, all session data will be encrypted before storage.
+    | Encryption and decryption happen automatically.
     |
     */
 
@@ -50,9 +48,8 @@ module.exports =  {
     | Session File Location
     |--------------------------------------------------------------------------
     |
-    | When using the native session driver, we need a location where session
-    | files may be stored. A default has been set for you but a different
-    | location may be specified. This is only needed for file sessions.
+    | When using the file session driver, specify the directory for storing
+    | session files. The default points to a folder inside storage.
     |
     */
 
@@ -63,9 +60,8 @@ module.exports =  {
     | Session Database Connection
     |--------------------------------------------------------------------------
     |
-    | When using the "database" or "redis" session drivers, you may specify a
-    | connection that should be used to manage these sessions. This should
-    | correspond to a connection in your database configuration options.
+    | When using database or redis drivers, specify the database connection
+    | to use. Should match a connection in your database config.
     |
     */
 
@@ -76,9 +72,7 @@ module.exports =  {
     | Session Database Table
     |--------------------------------------------------------------------------
     |
-    | When using the "database" session driver, you may specify the table we
-    | should use to manage the sessions. Of course, a sensible default is
-    | provided for you; however, you are free to change this as needed.
+    | Table name used when using the database session driver.
     |
     */
 
@@ -89,11 +83,10 @@ module.exports =  {
     | Session Cache Store
     |--------------------------------------------------------------------------
     |
-    | While using one of the framework's cache driven session backends you may
-    | list a cache store that should be used for these sessions. This value
-    | must match with one of the application's configured cache "stores".
+    | For cache-based session drivers, specify which cache store to use.
+    | Must correspond to one of your configured cache stores.
     |
-    | Affects: "apc", "dynamodb", "memcached", "redis"
+    | Supported cache stores: "apc", "dynamodb", "memcached", "redis"
     |
     */
 
@@ -104,9 +97,9 @@ module.exports =  {
     | Session Sweeping Lottery
     |--------------------------------------------------------------------------
     |
-    | Some session drivers must manually sweep their storage location to get
-    | rid of old sessions from storage. Here are the chances that it will
-    | happen on a given request. By default, the odds are 2 out of 100.
+    | Some session drivers require manual cleanup of old sessions.
+    | This array defines the odds (chance) that the cleanup will run on
+    | any given request, e.g., [2, 100] means 2% chance.
     |
     */
 
@@ -117,22 +110,20 @@ module.exports =  {
     | Session Cookie Name
     |--------------------------------------------------------------------------
     |
-    | Here you may change the name of the cookie used to identify a session
-    | instance by ID. The name specified here will get used every time a
-    | new session cookie is created by the framework for every driver.
+    | The name of the cookie used to identify a session instance.
+    | This is generated from your app name by default.
     |
     */
 
-    'cookie' : env('SESSION_COOKIE',env('APP_NAME', 'ostro')+'_session').toLowerCase(),
+    'cookie' : env('SESSION_COOKIE', env('APP_NAME', 'ostro') + '_session').toLowerCase(),
 
     /*
     |--------------------------------------------------------------------------
     | Session Cookie Path
     |--------------------------------------------------------------------------
     |
-    | The session cookie path determines the path for which the cookie will
-    | be regarded as available. Typically, this will be the root path of
-    | your application but you are free to change this when necessary.
+    | The path for which the session cookie is valid.
+    | Defaults to root path '/'.
     |
     */
 
@@ -143,9 +134,8 @@ module.exports =  {
     | Session Cookie Domain
     |--------------------------------------------------------------------------
     |
-    | Here you may change the domain of the cookie used to identify a session
-    | in your application. This will determine which domains the cookie is
-    | available to in your application. A sensible default has been set.
+    | The domain for the session cookie.
+    | Defines which domains the cookie is available to.
     |
     */
 
@@ -156,22 +146,20 @@ module.exports =  {
     | HTTPS Only Cookies
     |--------------------------------------------------------------------------
     |
-    | By setting this option to true, session cookies will only be sent back
-    | to the server if the browser has a HTTPS connection. This will keep
-    | the cookie from being sent to you when it can't be done securely.
+    | If true, cookies will only be sent over HTTPS connections,
+    | enhancing security.
     |
     */
 
-    'secure' : env('SESSION_SECURE_COOKIE',false),
+    'secure' : env('SESSION_SECURE_COOKIE', false),
 
     /*
     |--------------------------------------------------------------------------
     | HTTP Access Only
     |--------------------------------------------------------------------------
     |
-    | Setting this value to true will prevent JavaScript from accessing the
-    | value of the cookie and the cookie will only be accessible through
-    | the HTTP protocol. You are free to modify this option if needed.
+    | If true, prevents JavaScript from accessing the cookie.
+    | The cookie is accessible only through HTTP(S) protocol.
     |
     */
 
@@ -182,15 +170,25 @@ module.exports =  {
     | Same-Site Cookies
     |--------------------------------------------------------------------------
     |
-    | This option determines how your cookies behave when cross-site requests
-    | take place, and can be used to mitigate CSRF attacks. By default, we
-    | will set this value to "lax" since this is a secure default value.
-    |
-    | Supported: "lax", "strict", "none", null
+    | Controls cookie behavior during cross-site requests.
+    | Helps mitigate CSRF attacks.
+    | Supported values: "lax", "strict", "none", or null.
     |
     */
 
     'same_site' : 'lax',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Save Behavior (for express-session compatibility)
+    |--------------------------------------------------------------------------
+    |
+    | 'resave': Forces session to be saved back to the session store,
+    | even if it was never modified during the request.
+    |
+    | 'saveUninitialized': Forces uninitialized sessions to be saved.
+    |
+    */
 
     'resave': false,
 
