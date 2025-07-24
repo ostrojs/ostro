@@ -2,83 +2,96 @@ module.exports = {
 
     /*
     |--------------------------------------------------------------------------
-    | Default cache requests
+    | Default Cache Store
     |--------------------------------------------------------------------------
     |
-    | This option defines the default cache stores that gets used when sending
-    | data to the cache. The name specified in this option should match
-    | one of the stores defined in the "storess" configuration json.
+    | This key specifies the default cache driver/store your application
+    | will use when performing caching operations, unless explicitly overridden.
+    | The value should correspond to one of the keys defined in the 'stores' object.
     |
     */
     'default': env('CACHE_DRIVER', 'file'),
 
     /*
     |--------------------------------------------------------------------------
-    | Cache enable behavior
+    | Cache Enablement Flag
     |--------------------------------------------------------------------------
     |
-    | This option defines to enable and disable cache.
+    | Globally enables or disables caching throughout the application.
+    | When set to false, caching logic will be bypassed entirely.
     |
     */
     'enabled': env('CACHE_ENABLE', true),
 
     /*
     |--------------------------------------------------------------------------
-    | cache storess
+    | Cache Stores Configuration
     |--------------------------------------------------------------------------
     |
-    | Here you may configure the cache stores for your application. 
+    | Defines multiple cache stores that your application can use.
+    | Each store specifies a driver and driver-specific configuration options.
+    | You can switch between stores by changing the 'default' setting or 
+    | specify a store for individual caching needs.
     |
-    | Available Drivers: "memory", "database", "file", "redis"
+    | Supported drivers include: "memory", "database", "file", "redis", "memcached".
     |
     */
     'stores': {
         
         'memory': {
-            'driver': 'memory',
+            'driver': 'memory',  // Fast in-memory caching; non-persistent (lost on restart)
         },
 
         'database': {
-            'driver': 'database',
-            'table': 'caches',
-            'connection': null,
+            'driver': 'database',  // Caches data in a database table
+            'table': 'caches',     // Table name where cache entries are stored
+            'connection': null,    // Database connection name; null uses default
         },
 
         'file': {
-            'driver': 'file',
-            'path': storage_path('framework/cache/data'),
+            'driver': 'file',  // Stores cache items as files on disk
+            'path': storage_path('framework/cache/data'), // Directory to store cache files
         },
 
         'session': {
-            'stores': env('CACHE_DRIVER', 'file'),
-            'path': storage_path('framework/sessions'),
+            'stores': env('CACHE_DRIVER', 'file'),  // Uses session storage for caching
+            'path': storage_path('framework/sessions'), // Path where session files are saved
         },
 
         'redis': {
-            'driver': 'redis',
+            'driver': 'redis',  // Uses Redis key-value store for caching
             'server': {
-                'host': env('REDIS_HOST', 'localhost'),
-                'port': env('REDIS_PORT', 13002),
-                'password': env('REDIS_PASSWORD'),
-                'user': env('REDIS_USERNAME'),
+                'host': env('REDIS_HOST', 'localhost'),     // Redis server hostname/IP
+                'port': env('REDIS_PORT', 13002),           // Redis port number
+                'password': env('REDIS_PASSWORD'),           // Password if Redis is secured
+                'user': env('REDIS_USERNAME'),               // Optional Redis username
             }
         },
 
         'memcached': {
-            'driver': 'memcached',
-            'persistent_id': env('MEMCACHED_PERSISTENT_ID'),
+            'driver': 'memcached',  // Uses Memcached server for caching
+            'persistent_id': env('MEMCACHED_PERSISTENT_ID'),  // Optional persistent connection ID
 
-            'options': {},
+            'options': {},  // Extra Memcached client options (e.g., compression, timeout)
             'server': {
-
-                'host': env('MEMCACHED_HOST', '127.0.0.1'),
-                'port': env('MEMCACHED_PORT', 11211),
-                'weight': 100,
-                'user': env('MEMCACHED_USERNAME'),
-                'password': env('MEMCACHED_PASSWORD'),
-
+                'host': env('MEMCACHED_HOST', '127.0.0.1'),  // Memcached server IP/hostname
+                'port': env('MEMCACHED_PORT', 11211),        // Memcached listening port
+                'weight': 100,                                // Weight for load balancing
+                'user': env('MEMCACHED_USERNAME'),            // Optional username for auth
+                'password': env('MEMCACHED_PASSWORD'),        // Optional password for auth
             },
         }
     },
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cache Key Prefix
+    |--------------------------------------------------------------------------
+    |
+    | Prefix added to all cache keys to avoid collisions when multiple applications
+    | or environments share the same cache store.
+    |
+    */
     'prefix': env('CACHE_PREFIX', env('APP_NAME', 'ostro') + '_cache'),
+
 }

@@ -1,101 +1,106 @@
 module.exports = {
-
   /*
   |--------------------------------------------------------------------------
   | Default Database Connection Name
   |--------------------------------------------------------------------------
   |
-  | Specify which database connection below to use as the default connection
-  | for all database operations in OstroJS. You may define multiple 
-  | connections and use them as needed.
+  | Specifies which database connection from the 'connections' object should
+  | be used by default for all database queries and operations, unless
+  | explicitly overridden elsewhere.
   |
   */
-
-  default: env('DB_CONNECTION', 'sqlite'),
+  default: env("DB_CONNECTION", "sqlite"),
 
   /*
   |--------------------------------------------------------------------------
   | Database Connections
   |--------------------------------------------------------------------------
   |
-  | Define the database connection configurations for your application.
-  | Examples include sqlite, mysql, pgsql, and sqlsrv. OstroJS uses node
-  | database drivers like 'mysql2', 'pg', or 'mssql'.
-  |
-  | Ensure the required Node.js drivers are installed in your project.
+  | Defines the configuration for each database connection your application
+  | supports. Each connection includes driver details and connection options.
+  | You can configure as many connections as needed here.
   |
   */
-
   connections: {
     sqlite: {
-      driver: 'sqlite',
-      url: env('DATABASE_URL'),
-      database: env('DB_DATABASE', database_path('database.sqlite')),
-      foreign_key_constraints: env('DB_FOREIGN_KEYS', true),
+      driver: "sqlite",
+      url: env("DATABASE_URL"),
+      database: env("DB_DATABASE", database_path("database.sqlite")),
+      foreign_key_constraints: env("DB_FOREIGN_KEYS", true),
     },
     mysql: {
-      driver: 'mysql',
-      host: env('DB_HOST', '127.0.0.1'),
-      port: env('DB_PORT', 3306),
-      database: env('DB_DATABASE', 'forge'),
-      username: env('DB_USERNAME', 'forge'),
-      password: env('DB_PASSWORD', ''),
+      driver: "mysql",
+      host: env("DB_HOST", "127.0.0.1"),
+      port: env("DB_PORT", 3306),
+      database: env("DB_DATABASE", "forge"),
+      username: env("DB_USERNAME", "forge"),
+      password: env("DB_PASSWORD", ""),
     },
     pgsql: {
-      driver: 'pgsql',
-      url: env('DATABASE_URL'),
-      host: env('DB_HOST', '127.0.0.1'),
-      port: env('DB_PORT', 5432),
-      database: env('DB_DATABASE', 'forge'),
-      username: env('DB_USERNAME', 'forge'),
-      password: env('DB_PASSWORD', ''),
-      prefix: '',
-      schema: 'public',
+      driver: "pgsql",
+      url: env("DATABASE_URL"),
+      host: env("DB_HOST", "127.0.0.1"),
+      port: env("DB_PORT", 5432),
+      database: env("DB_DATABASE", "forge"),
+      username: env("DB_USERNAME", "forge"),
+      password: env("DB_PASSWORD", ""),
+      prefix: "",
+      schema: "public",
     },
     sqlsrv: {
-      driver: 'sqlsrv',
-      host: env('DB_HOST', '127.0.0.1'),
-      port: env('DB_PORT', 1433),
-      database: env('DB_DATABASE', 'forge'),
-      username: env('DB_USERNAME', 'forge'),
-      password: env('DB_PASSWORD', ''),
-      charset: 'utf8',
-      prefix: '',
+      driver: "sqlsrv",
+      host: env("DB_HOST", "127.0.0.1"),
+      port: env("DB_PORT", 1433),
+      database: env("DB_DATABASE", "forge"),
+      username: env("DB_USERNAME", "forge"),
+      password: env("DB_PASSWORD", ""),
+      charset: "utf8",
+      prefix: "",
       encrypt: env('DB_ENCRYPT', false),
     },
     oracle: {
-      driver: 'oracle',
-      host: env('DB_HOST', '127.0.0.1'),
-      port: env('DB_PORT', 1521),
-      database: env('DB_DATABASE', 'forge'),
-      username: env('DB_USERNAME', 'forge'),
-      password: env('DB_PASSWORD', ''),
-      charset: 'utf8',
-      prefix: '',
+      driver: "oracle",
+      host: env("DB_HOST", "127.0.0.1"),
+      port: env("DB_PORT", 1521),
+      database: env("DB_DATABASE", "forge"),
+      username: env("DB_USERNAME", "forge"),
+      password: env("DB_PASSWORD", ""),
+      charset: "utf8",
+      prefix: "",
     },
   },
 
   /*
   |--------------------------------------------------------------------------
-  | Migration & Seeder Paths
+  | Migration Path
   |--------------------------------------------------------------------------
   |
-  | Define the paths for migration and seeder scripts relative to the 
-  | project root. OstroJS migration system will use these locations.
+  | The filesystem path where your database migration files are stored.
+  | Migrations help version control your database schema changes.
   |
   */
-  migration_path: path.resolve('database/migrations'),
-  seeder_path: path.resolve('database/seeders'),
+  migration_path: database_path("migrations"),
+
+  /*
+  |--------------------------------------------------------------------------
+  | Seeder Path
+  |--------------------------------------------------------------------------
+  |
+  | The directory path where your database seed files are located.
+  | Seeders are used to populate your database with test or initial data.
+  |
+  */
+  seeder_path: database_path("seeders"),
 
   /*
   |--------------------------------------------------------------------------
   | Migration Repository Table
   |--------------------------------------------------------------------------
   |
-  | This table keeps track of all migrations that have been run in the
-  | database so that migrations aren't run twice. OstroJS will use this.
+  | The name of the database table that keeps track of which migrations
+  | have already been executed. This allows the system to know what
+  | migrations are pending and avoid re-running migrations.
   |
   */
-  migrations: 'migrations',
-
+  migrations: "migrations",
 };

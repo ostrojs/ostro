@@ -1,87 +1,73 @@
 let http = require('http');
 let https = require('https');
 
-module.exports =  {
-    /*
-    |--------------------------------------------------------------------------
-    | Default XHR Adapter
-    |--------------------------------------------------------------------------
-    |
-    | This option sets the default adapter that will be used for all XHR (HTTP)
-    | requests initiated by your application. It defines which library or
-    | module should handle outgoing HTTP calls, unless explicitly overridden.
-    |
-    | Supported: "axios", "request"
-    |
-    */
-    'default' : env('XHR_ADAPTER', 'axios'),
+module.exports = {
+  /*
+  |--------------------------------------------------------------------------
+  | Default XHR Adapter
+  |--------------------------------------------------------------------------
+  |
+  | Specifies which XHR (XMLHttpRequest) library/adapter will be used by default
+  | when sending HTTP requests in your application. This should correspond to
+  | one of the keys defined under the "requests" configuration below.
+  |
+  | Common adapters include:
+  | - "axios" : Promise-based HTTP client for browser and node.js
+  | - "request": Simplified HTTP client (deprecated but still used in some apps)
+  |
+  */
+  'default': env('XHR_ADAPTER', 'axios'),
 
-    /*
-    |--------------------------------------------------------------------------
-    | XHR Requests Configuration
-    |--------------------------------------------------------------------------
-    |
-    | In this section, you can configure the available XHR (XMLHttpRequest)
-    | drivers for making HTTP requests within your app.
-    |
-    | Each driver has its own settings such as timeout, keep-alive, and
-    | transport agents. This allows fine-tuned control over network calls.
-    |
-    | You may register multiple request adapters, and switch them based on
-    | use case. Below are supported configurations for "axios" and "request".
-    |
-    */
-    'requests' : {
+  /*
+  |--------------------------------------------------------------------------
+  | XHR Requests Configuration
+  |--------------------------------------------------------------------------
+  |
+  | Configure the HTTP request libraries/drivers your application supports.
+  | Each request driver can have its own options to customize behavior,
+  | including timeouts, connection persistence, max content length, etc.
+  |
+  | The available drivers are:
+  | - axios
+  | - request
+  |
+  */
+  'requests': {
+    'axios': {
+      'driver': 'axios',
+      'options': {
+        // Maximum size of the HTTP response body allowed. Infinity means no limit.
+        'maxContentLength': Infinity,
+        
+        // HTTP agent to manage connection persistence (keep-alive).
+        'httpAgent': new http.Agent({
+          keepAlive: true, // Keep TCP connections alive for reuse
+          keepAliveMsecs: env('XHR_KEEP_ALIVE_MSECS', 10000), // Time to keep alive in ms
+        }),
 
-        'axios' : {
-            'driver' : 'axios',
+        // HTTPS agent for secure requests with the same keep-alive options.
+        'httpsAgent': new https.Agent({
+          keepAlive: true,
+          keepAliveMsecs: env('XHR_KEEP_ALIVE_MSECS', 10000),
+        }),
 
-            /*
-            |--------------------------------------------------------------------------
-            | Axios Options
-            |--------------------------------------------------------------------------
-            |
-            | Configuration for axios-based HTTP requests.
-            |
-            | - maxContentLength: Controls the maximum response size (Infinity means unlimited).
-            | - httpAgent / httpsAgent: Node.js agents to reuse sockets (keep-alive).
-            | - timeout: The maximum time (in ms) before the request is aborted.
-            |
-            */
-            'options': {
-                'maxContentLength': Infinity,
-                'httpAgent': new http.Agent({ 
-                    keepAlive: true,
-                    keepAliveMsecs: env('XHR_KEEP_ALIVE_MSECS', 10000)
-                }),
-                'httpsAgent': new https.Agent({ 
-                    keepAlive: true,
-                    keepAliveMsecs: env('XHR_KEEP_ALIVE_MSECS', 10000)
-                }),
-                'timeout': env('XHR_TIMEOUT', 300000),
-            },
-        },
+        // Timeout for requests in milliseconds (default 5 minutes).
+        'timeout': env('XHR_TIMEOUT', 300000),
+      },
+    },
 
-        'request' : {
-            'driver' : 'request',
+    'request': {
+      'driver': 'request',
+      'options': {
+        // Maximum response size allowed.
+        'maxContentLength': Infinity,
 
-            /*
-            |--------------------------------------------------------------------------
-            | Request Module Options
-            |--------------------------------------------------------------------------
-            |
-            | Configuration for the legacy "request" library (deprecated but still usable).
-            |
-            | - maxContentLength: Maximum allowed response body size.
-            | - forever: Enables keep-alive connections.
-            | - timeout: Max request time before aborting (in milliseconds).
-            |
-            */
-            'options': {
-                'maxContentLength': Infinity,
-                'forever': true,
-                'timeout': env('XHR_TIMEOUT', 300000),
-            },
-        }
-    }
+        // Use 'forever' option to keep sockets open for reuse, similar to keep-alive.
+        'forever': true,
+
+        // Timeout in milliseconds for the request.
+        'timeout': env('XHR_TIMEOUT', 300000),
+      },
+    },
+  },
 };

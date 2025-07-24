@@ -5,13 +5,12 @@ module.exports = {
     | Application Name
     |--------------------------------------------------------------------------
     |
-    | The name of your application is represented by this value. When the framework
-    | wants to place the application's name in a notice or any other location
-    | specified by the application or its packages, this value is utilised.
-    | This can be used in logs, error messages, or UI components.
+    | This key holds the name of your application. It is used throughout the
+    | framework and any packages that require a reference to your app’s name.
+    | For example, it might appear in email templates, notifications, or page titles.
+    | Set this in your environment file with APP_NAME.
     |
     */
-
     'name': env('APP_NAME', 'Ostro'),
 
     /*
@@ -19,12 +18,11 @@ module.exports = {
     | Application Port
     |--------------------------------------------------------------------------
     |
-    | Application needs to identify on which port the server is running.
-    | This port is used by the HTTP server to listen for incoming requests.
-    | You can configure this in your environment variables or use the default 8080.
+    | The network port number where your server will listen for incoming requests.
+    | Usually set to 80 for HTTP or 443 for HTTPS in production, but defaults to 8080.
+    | Can be customized per environment via APP_PORT.
     |
     */
-
     'port': env('APP_PORT', 8080),
 
     /*
@@ -32,12 +30,11 @@ module.exports = {
     | Application Host
     |--------------------------------------------------------------------------
     |
-    | Application needs to identify on which host or IP address the server is running.
-    | By default, it is bound to localhost (127.0.0.1), but can be set to 0.0.0.0
-    | to listen on all interfaces, useful for containerized or cloud deployments.
+    | The hostname or IP address that your server will bind to. This is usually
+    | 'localhost' or '127.0.0.1' for development environments, but can be set
+    | to a public IP or domain in production.
     |
     */
-
     'host': env('APP_HOST', '127.0.0.1'),
 
     /*
@@ -45,14 +42,11 @@ module.exports = {
     | Application Environment
     |--------------------------------------------------------------------------
     |
-    | The "environment" in which your program is presently executing is
-    | determined by this value. This may influence how you choose to setup
-    | the application's various services such as logging levels, debugging,
-    | or caching strategies. Common values include 'production', 'development', and 'testing'.
-    | Make a note of it in your ".env" file.
+    | This setting defines the current runtime environment for your application.
+    | Common values are 'production', 'development', or 'testing'.
+    | It can be used to load environment-specific configurations or behaviors.
     |
     */
-
     'env': env('APP_ENV', 'production'),
 
     /*
@@ -60,13 +54,11 @@ module.exports = {
     | Application Debug Mode
     |--------------------------------------------------------------------------
     |
-    | When your program is in debug mode, it will display comprehensive error
-    | messages with stack traces for any problem that happens. If this option is
-    | deactivated, a generic error page is displayed to avoid leaking sensitive
-    | information in production environments.
+    | When enabled (true), the application will display detailed error messages
+    | and stack traces to aid debugging. It should always be disabled (false)
+    | in production to avoid leaking sensitive information.
     |
     */
-
     'debug': Boolean(env('APP_DEBUG', false)),
 
     /*
@@ -74,12 +66,11 @@ module.exports = {
     | Application URL
     |--------------------------------------------------------------------------
     |
-    | When using the command line tools or generating URLs, this base URL is
-    | used to build full URLs. This should be set to the root of your application
-    | and can help when generating links or redirect URLs in your app.
+    | The base URL for your application. This is used for generating
+    | links within the app and for console commands that require a URL.
+    | Should be set to the public-facing URL of your site.
     |
     */
-
     'url': env('APP_URL', 'http://localhost'),
 
     /*
@@ -87,12 +78,11 @@ module.exports = {
     | Application Asset URL
     |--------------------------------------------------------------------------
     |
-    | Whenever you want to use asset URL helper functions in views or other
-    | components, you can set your own asset URL endpoint here. Useful if
-    | you are serving static assets from a CDN or separate domain.
+    | Optional base URL to serve your assets (CSS, JS, images).
+    | If set, asset URLs generated will be prefixed with this value.
+    | Useful if you serve assets from a CDN or different domain.
     |
     */
-
     'asset_url': env('ASSET_URL', null),
 
     /*
@@ -100,25 +90,22 @@ module.exports = {
     | Application Timezone
     |--------------------------------------------------------------------------
     |
-    | The default timezone for your application, which will be utilized by the
-    | NodeJS date and date-time functions like `new Date()`, or any date library
-    | you might use (e.g. moment.js or dayjs). Set this to your preferred timezone.
+    | The default timezone used by PHP’s date and time functions.
+    | This affects how dates are formatted and manipulated within your app.
+    | Defaults to UTC for portability but can be set to your local timezone.
     |
     */
-
     'timezone': 'UTC',
 
     /*
     |--------------------------------------------------------------------------
-    | Application Locale Configuration
+    | Application Locale
     |--------------------------------------------------------------------------
     |
-    | The default locale used by the translation or localization service provider
-    | is determined by this value. This can be set to any supported locale your
-    | application supports, such as 'en', 'fr', 'es', etc.
+    | The default locale determines the language for translation strings,
+    | formatting of dates, numbers, etc. Set this to the primary language of your app.
     |
     */
-
     'locale': 'en',
 
     /*
@@ -126,12 +113,10 @@ module.exports = {
     | Application Fallback Locale
     |--------------------------------------------------------------------------
     |
-    | When the current locale is unavailable or missing translations, the fallback
-    | locale selects which one to use. This helps prevent missing language strings
-    | and provides a consistent user experience.
+    | If the current locale is not available, this fallback locale will be used.
+    | It ensures your app can still display content even if a translation is missing.
     |
     */
-
     'fallback_locale': 'en',
 
     /*
@@ -139,25 +124,22 @@ module.exports = {
     | Encryption Key
     |--------------------------------------------------------------------------
     |
-    | The Ostro encrypter service uses this key, which should be configured
-    | to a random 32-character string; otherwise, encrypted texts such as cookies,
-    | session data, or sensitive information will not be secure.
-    | Ensure this is set before deploying your application.
+    | This key is used by the encryption service to secure sensitive data.
+    | It must be a random, 32-character string and kept secret.
+    | Without it, encrypted data will not be safe.
     |
     */
-
     'key': env('APP_KEY'),
 
     /*
     |--------------------------------------------------------------------------
-    | Cipher Algorithm
+    | Encryption Cipher
     |--------------------------------------------------------------------------
     |
-    | The encryption cipher used by the encrypter service.
-    | AES-256-CBC is a strong and widely supported encryption standard.
+    | Specifies the cipher algorithm used for encryption.
+    | AES-256-CBC is a strong and widely used symmetric encryption standard.
     |
     */
-
     'cipher': 'AES-256-CBC',
 
     /*
@@ -165,12 +147,11 @@ module.exports = {
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
-    | The service providers listed here will be automatically loaded when
-    | your application starts. Feel free to add your own providers to extend
-    | your app’s functionality, such as authentication, caching, session, etc.
+    | An array of service provider modules that are automatically loaded on app boot.
+    | These providers register bindings, event listeners, middleware, and more.
+    | You can add your own providers here to extend the framework’s functionality.
     |
     */
-
     'providers': [
         require('@ostro/auth/authServiceProvider'),
         require('@ostro/cache/cacheServiceProvider'),
@@ -192,13 +173,11 @@ module.exports = {
     | Class Aliases
     |--------------------------------------------------------------------------
     |
-    | When this application is started, this array of class aliases will
-    | be registered. These aliases provide a convenient shortcut to access
-    | commonly used classes or facades, without needing to import them repeatedly.
-    | They are "lazy" loaded and will not slow down your application startup.
+    | This array defines convenient class aliases (facades) for core services.
+    | They are lazy loaded and allow easy access to common services like routing,
+    | caching, storage, logging, and more without importing classes everywhere.
     |
     */
-
     'aliases': {
         'Route': require('@ostro/support/facades/route'),
         'Cache': require('@ostro/support/facades/cache'),
@@ -209,4 +188,5 @@ module.exports = {
         'Hash': require('@ostro/support/facades/hash'),
         'Crypt': require('@ostro/support/facades/crypt')
     }
-};
+
+}

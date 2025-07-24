@@ -1,17 +1,39 @@
 module.exports = {
-    
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Filesystem Disk
+    |--------------------------------------------------------------------------
+    |
+    | Specifies the default disk to be used by the application when storing
+    | files. This should correspond to one of the disks defined in the
+    | 'disks' section below. This option allows easy switching of storage
+    | backends without changing the rest of your code.
+    |
+    */
     'default': env('FILESYSTEM_DRIVER', 'local'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Default Cloud Filesystem Disk
+    |--------------------------------------------------------------------------
+    |
+    | Defines the default disk that should be used for cloud storage. This is
+    | useful if your application needs to work with both local and cloud-based
+    | storage services simultaneously.
+    |
+    */
     'cloud': env('FILESYSTEM_CLOUD', 's3'),
-    
+
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
     |--------------------------------------------------------------------------
     |
-    | Here you may configure as many filesystem "disks" as you wish, and you
-    | may even configure multiple disks of the same driver. Defaults have
-    | been setup for each driver as an example of the required options.
+    | Here you can configure multiple filesystem "disks", even multiple disks
+    | of the same driver. Each disk represents a particular storage location
+    | and driver combination. This makes it easy to interact with different
+    | storage systems like local storage, Azure, or Amazon S3 in a unified way.
     |
     | Supported Drivers: "local", "azure", "s3"
     |
@@ -19,44 +41,44 @@ module.exports = {
     'disks': {
         'local': {
             'driver': 'local',
-            'root': storage_path('app'),
-            'encoding': 'utf8',
+            'root': storage_path('app'),        // Path where files are stored locally
+            'encoding': 'utf8',                 // File encoding used when reading/writing
         },
 
         'session': {
             'driver': 'local',
-            'root': storage_path('session'),
+            'root': storage_path('session'),   // Separate local path for session files
             'encoding': 'utf8',
         },
 
         'xslt': {
             'driver': 'local',
-            'root': storage_path('xslt'),
-            'encoding': 'utf8'
+            'root': storage_path('xslt'),      // Local path specifically for XSLT files
+            'encoding': 'utf8',
         },
 
         'public': {
             'driver': 'local',
-            'root': public_path(''),
+            'root': public_path(''),            // Public directory root for accessible files
             'encoding': 'utf8',
         },
 
         'view': {
             'driver': 'local',
-            'root': view_path(''),
+            'root': view_path(''),              // Local path for storing view/template files
             'encoding': 'utf8',
         },
 
         'azure': {
-            'driver': 'azure',
-            'key': env('FILESYSTEM_CLOUD_AZURE_KEY', env('FILESYSTEM_CLOUD_AZURE_KEY')),
-            'account': env('FILESYSTEM_CLOUD_AZURE_ACCOUNT', env('FILESYSTEM_CLOUD_AZURE_ACCOUNT')),
-            'container': env('FILESYSTEM_CLOUD_AZURE_CONTAINER', env('FILESYSTEM_CLOUD_AZURE_CONTAINER')),
-            'url': env('FILESYSTEM_CLOUD_AZURE_URL', env('FILESYSTEM_CLOUD_AZURE_URL')),
+            'driver': 'azure',                  // Azure Blob Storage driver
+            'key': env('FILESYSTEM_CLOUD_AZURE_KEY'),
+            'account': env('FILESYSTEM_CLOUD_AZURE_ACCOUNT'),
+            'container': env('FILESYSTEM_CLOUD_AZURE_CONTAINER'),
+            'url': env('FILESYSTEM_CLOUD_AZURE_URL'),
         },
 
         's3': {
-            'driver': 's3',
+            'driver': 's3',                    // Amazon S3 driver
             'key': env('AWS_ACCESS_KEY_ID'),
             'secret': env('AWS_SECRET_ACCESS_KEY'),
             'region': env('AWS_DEFAULT_REGION'),
