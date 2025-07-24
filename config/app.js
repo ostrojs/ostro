@@ -8,7 +8,6 @@ module.exports = {
     | The name of your application is represented by this value. When the framework
     | wants to place the application's name in a notice or any other location
     | specified by the application or its packages, this value is utilised.
-    | This can be used in logs, error messages, or UI components.
     |
     */
 
@@ -19,9 +18,7 @@ module.exports = {
     | Application Port
     |--------------------------------------------------------------------------
     |
-    | Application needs to identify on which port the server is running.
-    | This port is used by the HTTP server to listen for incoming requests.
-    | You can configure this in your environment variables or use the default 8080.
+    | Application needs to identify on which port server is running.
     |
     */
 
@@ -32,9 +29,7 @@ module.exports = {
     | Application Host
     |--------------------------------------------------------------------------
     |
-    | Application needs to identify on which host or IP address the server is running.
-    | By default, it is bound to localhost (127.0.0.1), but can be set to 0.0.0.0
-    | to listen on all interfaces, useful for containerized or cloud deployments.
+    | Application needs to identify on which host server is running.
     |
     */
 
@@ -45,11 +40,9 @@ module.exports = {
     | Application Environment
     |--------------------------------------------------------------------------
     |
-    | The "environment" in which your program is presently executing is
+    | The "environment" in which your programme is presently executing is
     | determined by this value. This may influence how you choose to setup
-    | the application's various services such as logging levels, debugging,
-    | or caching strategies. Common values include 'production', 'development', and 'testing'.
-    | Make a note of it in your ".env" file.
+    | the application's various services. Make a note of it in your ".env" file.
     |
     */
 
@@ -60,10 +53,9 @@ module.exports = {
     | Application Debug Mode
     |--------------------------------------------------------------------------
     |
-    | When your program is in debug mode, it will display comprehensive error
+    | When your programme is in debug mode, it will display comprehensive error
     | messages with stack traces for any problem that happens. If this option is
-    | deactivated, a generic error page is displayed to avoid leaking sensitive
-    | information in production environments.
+    | deactivated, a generic error page is displayed.
     |
     */
 
@@ -74,9 +66,9 @@ module.exports = {
     | Application URL
     |--------------------------------------------------------------------------
     |
-    | When using the command line tools or generating URLs, this base URL is
-    | used to build full URLs. This should be set to the root of your application
-    | and can help when generating links or redirect URLs in your app.
+    | When using the Assistant command line tool, the console uses this URL to
+    | correctly create URLs. This should be set to the root of your application
+    | so that it may be utilised when Assistant tasks are executed.
     |
     */
 
@@ -87,9 +79,8 @@ module.exports = {
     | Application Asset URL
     |--------------------------------------------------------------------------
     |
-    | Whenever you want to use asset URL helper functions in views or other
-    | components, you can set your own asset URL endpoint here. Useful if
-    | you are serving static assets from a CDN or separate domain.
+    | Whenever you wanted to use asset_url helpers function in view you can
+    | set you own asset url endpoint.
     |
     */
 
@@ -100,9 +91,9 @@ module.exports = {
     | Application Timezone
     |--------------------------------------------------------------------------
     |
-    | The default timezone for your application, which will be utilized by the
-    | NodeJS date and date-time functions like `new Date()`, or any date library
-    | you might use (e.g. moment.js or dayjs). Set this to your preferred timezone.
+    | The default timezone for your application, which will be utilised by the
+    | NodeJS date and date-time functions, may be set here. We've set this to a
+    | suitable setting for you right out of the box.
     |
     */
 
@@ -113,9 +104,9 @@ module.exports = {
     | Application Locale Configuration
     |--------------------------------------------------------------------------
     |
-    | The default locale used by the translation or localization service provider
-    | is determined by this value. This can be set to any supported locale your
-    | application supports, such as 'en', 'fr', 'es', etc.
+    | The default locale used by the translation service provider is determined
+    | by the application locale. You can set this value to any of the locations
+    | that the programme will support.
     |
     */
 
@@ -126,9 +117,9 @@ module.exports = {
     | Application Fallback Locale
     |--------------------------------------------------------------------------
     |
-    | When the current locale is unavailable or missing translations, the fallback
-    | locale selects which one to use. This helps prevent missing language strings
-    | and provides a consistent user experience.
+    | When the current locale is unavailable, the backup locale selects which
+    | one to use. You can modify the value to match to any of the language
+    | folders that your application provides.
     |
     */
 
@@ -140,9 +131,8 @@ module.exports = {
     |--------------------------------------------------------------------------
     |
     | The Ostro encrypter service uses this key, which should be configured
-    | to a random 32-character string; otherwise, encrypted texts such as cookies,
-    | session data, or sensitive information will not be secure.
-    | Ensure this is set before deploying your application.
+    | to a random 32-character string; otherwise, the encrypted texts will 
+    | not be secure. Before deploying an application, please do this!
     |
     */
 
@@ -150,14 +140,13 @@ module.exports = {
 
     /*
     |--------------------------------------------------------------------------
-    | Cipher Algorithm
+    | Encryption Cipher
     |--------------------------------------------------------------------------
     |
-    | The encryption cipher used by the encrypter service.
-    | AES-256-CBC is a strong and widely supported encryption standard.
+    | This defines the algorithm used by the encryption service.
+    | AES-256-CBC is a widely trusted and secure encryption standard.
     |
     */
-
     'cipher': 'AES-256-CBC',
 
     /*
@@ -165,9 +154,9 @@ module.exports = {
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
-    | The service providers listed here will be automatically loaded when
-    | your application starts. Feel free to add your own providers to extend
-    | your app’s functionality, such as authentication, caching, session, etc.
+    | The service providers mentioned here will be loaded automatically when
+    | your application start. Feel free to add your own services
+    | to this list to give your apps more functionality.
     |
     */
 
@@ -193,9 +182,8 @@ module.exports = {
     |--------------------------------------------------------------------------
     |
     | When this application is started, this array of class aliases will
-    | be registered. These aliases provide a convenient shortcut to access
-    | commonly used classes or facades, without needing to import them repeatedly.
-    | They are "lazy" loaded and will not slow down your application startup.
+    | be registered. However, you are free to register as many as you like
+    | because the aliases are "lazy" loaded and will not slow down your computer.
     |
     */
 
@@ -209,4 +197,4 @@ module.exports = {
         'Hash': require('@ostro/support/facades/hash'),
         'Crypt': require('@ostro/support/facades/crypt')
     }
-};
+}
