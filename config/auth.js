@@ -5,14 +5,13 @@ module.exports = {
     | Authentication Defaults
     |--------------------------------------------------------------------------
     |
-    | This option controls the default authentication "guard" and password
-    | reset options for your application. You may change these defaults
-    | as required, but they're a perfect start for most applications.
+    | Controls the default authentication guard and password reset options.
+    | You can modify these defaults to suit your app's needs.
+    | The default guard is used for all authentication requests unless overridden.
     |
     */
-
     'defaults': {
-        'guard': 'web', // Default guard that will be used for authentication requests
+        'guard': 'web', // Default guard for handling authentication (session-based)
     },
 
     /*
@@ -20,29 +19,25 @@ module.exports = {
     | Authentication Guards
     |--------------------------------------------------------------------------
     |
-    | Next, you may define every authentication guard for your application.
-    | Of course, a great default configuration has been defined for you
-    | here which uses session storage and the Eloquent user provider.
+    | Defines all authentication guards available in your application.
+    | Guards specify how users are authenticated for each request.
+    | Examples include session-based or token-based authentication.
+    | Each guard references a user provider which retrieves the user info.
     |
-    | All authentication drivers have a user provider. This defines how the
-    | users are actually retrieved out of your database or other storage
-    | mechanisms used by this application to persist your user's data.
-    |
-    | Supported: "session", "token"
+    | Supported drivers: "session" (stateful), "token" (stateless API tokens)
     |
     */
-
     'guards': {
 
         'web': {
-            'driver': 'session', // Uses sessions to maintain user state
-            'provider': 'users', // Refers to the provider that will fetch user data
+            'driver': 'session', // Maintains user state via sessions (for web apps)
+            'provider': 'users', // Specifies which user provider to use for fetching user info
         },
 
         'api': {
-            'driver': 'token', // Uses simple token-based authentication
-            'provider': 'users', // Shares the same provider as the 'web' guard
-            'hash': false, // Disables hashing for tokens (not recommended for production)
+            'driver': 'token', // Uses tokens for stateless API authentication
+            'provider': 'users', // Uses the same user provider as 'web'
+            'hash': false, // Token hashing disabled (not recommended for production)
         },
     },
 
@@ -51,23 +46,18 @@ module.exports = {
     | User Providers
     |--------------------------------------------------------------------------
     |
-    | All authentication drivers have a user provider. This defines how the
-    | users are actually retrieved out of your database or other storage
-    | mechanisms used by this application to persist your user's data.
+    | Defines how user data is retrieved from storage.
+    | Can be connected to a database or ORM model.
+    | You may configure multiple providers if you have different user types.
     |
-    | If you have multiple user tables or models you may configure multiple
-    | sources which represent each model / table. These sources may then
-    | be assigned to any extra authentication guards you have defined.
-    |
-    | Supported: "database", "eloquent"
+    | Supported drivers: "database" (direct DB queries), "eloquent" (ORM models)
     |
     */
-
     'providers': {
 
         'users': {
-            'driver': 'eloquent', // Indicates the use of Eloquent ORM for user retrieval
-            'model': require('~/app/models/user'), // The model that represents application users
+            'driver': 'eloquent', // Uses ORM models to fetch users
+            'model': require('~/app/models/user'), // Path to the user model class
         },
 
     }
