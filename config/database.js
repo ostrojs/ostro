@@ -5,8 +5,8 @@ module.exports = {
     |--------------------------------------------------------------------------
     |
     | Here you may specify which of the database connections below you wish
-    | to use as your default connection for all database work. Of course
-    | you may use many connections at once using the Database library.
+    | to use as your default connection for all database work. Of course,
+    | you may use many connections at once using the OstroJS database system.
     |
     */
   default: env("DB_CONNECTION", "sqlite"), // Default database connection used by the application
@@ -17,13 +17,12 @@ module.exports = {
     |--------------------------------------------------------------------------
     |
     | Here are each of the database connections setup for your application.
-    | Of course, examples of configuring each database platform that is
-    | supported by Laravel is shown below to make development simple.
+    | Examples for different platforms supported by OstroJS are included
+    | to help make configuration and development easier.
     |
-    |
-    | All database work in Laravel is done through the PHP PDO facilities
-    | so make sure you have the driver for your particular database of
-    | choice installed on your machine before you begin development.
+    | All database operations in OstroJS are handled using Node.js drivers,
+    | so make sure you have the necessary Node packages installed for the
+    | specific database you're using before development begins.
     |
     */
   connections: {
@@ -80,7 +79,7 @@ module.exports = {
     },
   },
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Migration Files Path
     |--------------------------------------------------------------------------
@@ -115,5 +114,4 @@ module.exports = {
     |
     */
   migrations: "migrations",
-
 };
