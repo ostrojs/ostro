@@ -34,13 +34,13 @@ class RouteServiceProvider extends ServiceProvider {
 
     mapApiRoutes() {
         route.prefix('api')
-            .namespace(this.namespace)
+            .namespace(this.$namespace)
             .group(base_path('routes/api'))
     }
     
     mapWebRoutes() {
         route.middleware('web')
-            .namespace(this.namespace)
+            .namespace(this.$namespace)
             .group(base_path('routes/web'))
     }
 
