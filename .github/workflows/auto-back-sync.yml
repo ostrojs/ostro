@@ -1,0 +1,64 @@
+name: Universal Fork Sync Workflow (ostrojs & any fork)
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+
+permissions:
+  contents: write
+
+jobs:
+  universal-sync:
+    name: Universal Branch Sync (ostrojs & any fork)
+    runs-on: ubuntu-latest
+
+    # Prevent infinite loop if commit message contains [skip sync] or is from bot
+    if: |
+      !contains(github.event.head_commit.message, '[skip sync]') &&
+      github.actor != 'github-actions[bot]'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git User
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Branch Sync Operations
+        env:
+          GH_TOKEN: ${{ secrets.SYNC_TOKEN || secrets.GITHUB_TOKEN }}
+          REPO_OWNER: ${{ github.repository_owner }}
+          REPO_NAME: ${{ github.event.repository.name }}
+          REF_NAME: ${{ github.ref_name }}
+          CROSS_REPO_TOKEN: ${{ secrets.SYNC_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          echo "=================================================="
+          echo "Repository Owner : $REPO_OWNER"
+          echo "Repository Name  : $REPO_NAME"
+          echo "Push Branch      : $REF_NAME"
+          echo "=================================================="
+
+          if [ "$REPO_OWNER" == "ostrojs" ]; then
+            if [ "$REF_NAME" == "master" ]; then
+              echo "--> [OSTROJS MASTER PUSH] Merging ostrojs/master -> ostrojs/dev..."
+              git fetch origin dev 2>/dev/null || true
+              git checkout dev 2>/dev/null || git checkout -b dev origin/dev 2>/dev/null || true
+              git merge master --no-edit -X theirs || git rebase master || true
+              git push origin dev || git push origin dev --force-with-lease
+            fi
+          else
+            echo "--> [FORK REPO EVENT ($REPO_OWNER)] Syncing ostrojs/dev -> $REPO_OWNER/dev..."
+            gh repo sync "$REPO_OWNER/$REPO_NAME" --branch "dev" --source "ostrojs/$REPO_NAME:dev" || {
+              echo "--> Fast-forwarding / pushing directly from upstream ostrojs/dev..."
+              git remote add upstream "https://github.com/ostrojs/${REPO_NAME}.git" 2>/dev/null || true
+              git fetch upstream dev 2>/dev/null || true
+              git push origin upstream/dev:refs/heads/dev --force-with-lease || true
+            }
+          fi
