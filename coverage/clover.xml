@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1788667640952" clover="3.2.0">
+  <project timestamp="1788667640952" name="All files">
+    <metrics statements="69" coveredstatements="69" conditionals="2" coveredconditionals="2" methods="15" coveredmethods="15" elements="86" coveredelements="86" complexity="0" loc="69" ncloc="69" packages="11" files="15" classes="15"/>
+    <package name="app.console">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="kernel.js" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/app/console/kernel.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="app.exceptions">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="handler.js" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/app/exceptions/handler.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="app.http">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="kernel.js" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/app/http/kernel.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="app.http.controllers">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="controller.js" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/app/http/controllers/controller.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="app.http.middleware">
+      <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="authenticate.js" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/app/http/middleware/authenticate.js">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="9" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
+      <file name="redirectIfAuthenticated.js" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/app/http/middleware/redirectIfAuthenticated.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
+      <file name="verifyCsrfToken.js" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/app/http/middleware/verifyCsrfToken.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="app.models">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="user.js" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/app/models/user.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="app.providers">
+      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="appServiceProvider.js" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/app/providers/appServiceProvider.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+      </file>
+      <file name="routeServiceProvider.js" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/app/providers/routeServiceProvider.js">
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="bootstrap">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="app.js" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/bootstrap/app.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="database.migrations">
+      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="2021_17_25_041757_create_users_tables.js" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/database/migrations/2021_17_25_041757_create_users_tables.js">
+        <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="database.seeders">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="databaseSeeder.js" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/database/seeders/databaseSeeder.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="routes">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="api.js" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/routes/api.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+      <file name="web.js" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/routes/web.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

@@ -6,6 +6,7 @@
   "author": "amar",
   "license": "MIT",
   "scripts": {
+    "test": "NODE_PATH=../foundation/node_modules npx jest",
     "dev": "npm run development",
     "development": "mix",
     "watch": "mix watch",
