@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "./.dist",
+    "rootDir": "src",
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ]
+    },
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "strict": false,
+    "declaration": false,
+    "sourceMap": false,
+    "typeRoots": [
+      "./node_modules/@types",
+      "../node_modules/@types",
+      "../../node_modules/@types"
+    ]
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "test",
+    "src/test",
+    "build",
+    ".dist",
+    "jest.config.ts",
+    "src/jest.config.ts"
+  ]
+}

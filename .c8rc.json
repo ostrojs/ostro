@@ -1,0 +1,18 @@
+{
+  "all": true,
+  "include": [
+    "src/app/**/*.ts",
+    "src/bootstrap/app.ts",
+    "src/routes/**/*.ts",
+    "src/database/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules/**",
+    "test/**",
+    "src/test/**",
+    "src/jest.config.ts",
+    "src/webpack.mix.js",
+    "coverage/**",
+    "src/config/**"
+  ]
+}

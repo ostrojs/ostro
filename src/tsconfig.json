@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "isolatedModules": true,
+    "outDir": ".dist",
+    "rootDir": ".",
+    "paths": {
+      "~/*": [
+        "./*"
+      ]
+    },
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "strict": false,
+    "esModuleInterop": true
+  },
+  "include": [
+    "./*.ts",
+    "app/**/*.ts",
+    "bootstrap/**/*.ts",
+    "config/**/*.ts",
+    "database/**/*.ts",
+    "routes/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "test",
+    "build"
+  ]
+}
