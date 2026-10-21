@@ -8,3 +8,10 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/coverage
+build
+/build
+.dist
+/.dist
+AGY.md
+AYG.md
