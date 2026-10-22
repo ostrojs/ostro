@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 22
       - run: npm install -g npm@latest
-      - run: npm install
+      - run: npm install --dangerously-allow-all-scripts
       - run: npm test
 
   build:
@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: 22
       - run: npm install -g npm@latest
-      - run: npm install
+      - run: npm install --dangerously-allow-all-scripts
       - run: npm run build
       - uses: actions/upload-artifact@v4
         with:
