@@ -1,4 +1,4 @@
-# This workflow will run tests using node and then publish a package to npm when a release is created
+# Multi-stage CI/CD pipeline for OstroJS package release
 name: Node.js Package
 
 on:
@@ -6,7 +6,39 @@ on:
     types: [created]
 
 jobs:
-  publish-npm:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install -g npm@latest
+      - run: npm install
+      - run: npm test
+
+  build:
+    name: Build
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install -g npm@latest
+      - run: npm install
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: build/
+          retention-days: 1
+
+  publish:
+    name: Publish
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -17,7 +49,8 @@ jobs:
         with:
           node-version: 22
       - run: npm install -g npm@latest
-      - run: npm install
-      - run: npm test
-      - run: npm run build
+      - uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+          path: build/
       - run: cd build && npm publish --access public --tag latest --provenance
