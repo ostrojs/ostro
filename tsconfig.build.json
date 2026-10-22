@@ -13,13 +13,15 @@
     "skipLibCheck": true,
     "noImplicitAny": false,
     "strict": false,
-    "declaration": false,
+    "declaration": true,
     "sourceMap": false,
     "typeRoots": [
       "./node_modules/@types",
       "../node_modules/@types",
       "../../node_modules/@types"
-    ]
+    ],
+    "declarationMap": true,
+    "declarationDir": "./build/types"
   },
   "include": [
     "src/**/*.ts"
