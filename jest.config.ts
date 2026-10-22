@@ -35,6 +35,7 @@ export default {
         ]
     },
     "moduleNameMapper": {
+        "^~/(.*)$": "<rootDir>/src/$1"
     },
     "collectCoverage": true,
     "coverageDirectory": "coverage",
