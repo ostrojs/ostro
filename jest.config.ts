@@ -1,6 +1,6 @@
-import { execSync } from "child_process";
-import path from "path";
-import fs from "fs";
+import { execSync } from "node:child_process";
+import path from 'node:path';
+import fs from 'node:fs';
 
 let tsJestPath = "ts-jest";
 try {
@@ -54,7 +54,7 @@ export default {
         "!<rootDir>/test/**",
         "!<rootDir>/src/test/**",
         "!<rootDir>/src/jest.config.ts",
-        "!<rootDir>/src/webpack.mix.js",
+        "!<rootDir>/src/webpack.mix.ts",
         "!<rootDir>/coverage/**"
     ]
 };

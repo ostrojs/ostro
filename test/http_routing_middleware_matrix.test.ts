@@ -1,10 +1,8 @@
+import { describe, test, expect, beforeEach, afterEach, jest } from "@jest/globals";
 import Controller from '../src/app/http/controllers/controller';
 import Authenticate from '../src/app/http/middleware/authenticate';
 import RedirectIfAuthenticated from '../src/app/http/middleware/redirectIfAuthenticated';
 import VerifyCsrfToken from '../src/app/http/middleware/verifyCsrfToken';
-import HttpKernel from '../src/app/http/kernel';
-import webRoutes from '../src/routes/web';
-import apiRoutes from '../src/routes/api';
 import RouteServiceProvider from '../src/app/providers/routeServiceProvider';
 import AppServiceProvider from '../src/app/providers/appServiceProvider';
 import Handler from '../src/app/exceptions/handler';
@@ -52,7 +50,7 @@ describe('HTTP, Routing, Middleware, and Controllers Combinatorial Test Suite', 
                         return Promise.reject(new Error(`Validation failed for ${desc}`));
                     })
                 };
-                (global as any).app = jest.fn((k) => (k === 'validation' ? mockValidator : null));
+                (global as unknown as Record<string, unknown>).app = jest.fn((k) => (k === 'validation' ? mockValidator : null));
 
                 const req = { all: () => data };
                 if (shouldPass) {
@@ -69,7 +67,7 @@ describe('HTTP, Routing, Middleware, and Controllers Combinatorial Test Suite', 
             const mockValidator = {
                 validate: jest.fn().mockRejectedValue(new Error('Form error'))
             };
-            (global as any).app = jest.fn((k) => (k === 'validation' ? mockValidator : null));
+            (global as unknown as Record<string, unknown>).app = jest.fn((k) => (k === 'validation' ? mockValidator : null));
 
             const req = { all: () => ({ username: '' }) };
             await expect(ctrl.validateWithBag('loginForm', req, { username: 'required' })).rejects.toThrow('Form error');
@@ -88,7 +86,7 @@ describe('HTTP, Routing, Middleware, and Controllers Combinatorial Test Suite', 
                 test(`Authenticate redirectTo for ${desc}`, () => {
                     const auth = new Authenticate();
                     const req = { expectsJson: () => expectsJson };
-                    expect(auth.redirectTo(req as any)).toBe(expected);
+                    expect(auth.redirectTo(req as unknown as import("@ostro/http/request").Request)).toBe(expected);
                 });
             });
         });

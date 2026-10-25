@@ -1,6 +1,6 @@
-import path from 'path';
-import fs from 'fs';
-import { execSync } from 'child_process';
+import { describe, test, expect } from "@jest/globals";
+import path from 'node:path';
+import fs from 'node:fs';
 import appInstance from '../src/bootstrap/app';
 
 describe('End-to-End Application Integration with Existing src Directory', () => {

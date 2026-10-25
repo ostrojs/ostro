@@ -1,10 +1,8 @@
-import path from 'path';
-import fs from 'fs';
-import os from 'os';
-import http from 'http';
-import axios from 'axios';
-import { execSync } from 'child_process';
-
+import { describe, test, expect, beforeAll, afterAll } from "@jest/globals";
+import path from 'node:path';
+import fs from 'node:fs';
+import os from 'node:os';
+import http from 'node:http';
 describe('Real-World Full Application Lifecycle & Feature Verification (TypeScript Mode)', () => {
     let appDir: string;
     let serverProcess: any;

@@ -169,6 +169,17 @@ const config: AppConfig = {
 
     /*
     |--------------------------------------------------------------------------
+    | TypeScript Application Mode
+    |--------------------------------------------------------------------------
+    |
+    | Defines whether the application is running in TypeScript mode.
+    | When true, console generator commands will output .ts files and use .ts stubs.
+    |
+    */
+    'typescript': true,
+
+    /*
+    |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
