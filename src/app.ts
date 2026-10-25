@@ -6,13 +6,13 @@ import type { IServer } from '@ostro/contracts/server/server';
 
 const kernel: IHttpKernel = app.make('@ostro/contracts/http/kernel');
 
-const server: IServer = app.make('@ostro/server', (app as unknown as { config: unknown }).config);
+const server: IServer = app.make('@ostro/server', app.config);
 
 server.request(requestHandler);
 
 server.response(responseHandler);
 
-server.register(kernel.handle({} as any));
+server.register(kernel.handle());
 
 server.start();
 

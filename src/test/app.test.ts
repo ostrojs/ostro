@@ -1,5 +1,6 @@
+import { describe, test, expect, beforeEach, afterEach, jest } from "@jest/globals";
 import '@ostro/support/helpers';
-import path from 'path';
+import path from 'node:path';
 import Facade from '@ostro/support/facades/facade';
 import appInstance from '../bootstrap/app';
 import User from '../app/models/user';

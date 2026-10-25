@@ -1,5 +1,6 @@
-import path from 'path';
-import fs from 'fs';
+import { describe, test, expect, beforeEach, jest } from "@jest/globals";
+import path from 'node:path';
+import fs from 'node:fs';
 
 describe('Webpack Mix and Asset Pipeline Suite', () => {
     let mockMix: any;
@@ -15,6 +16,10 @@ describe('Webpack Mix and Asset Pipeline Suite', () => {
                 registeredJs.push({ src, dest });
                 return mockMix;
             }),
+            ts: jest.fn((src: string, dest: string) => {
+                registeredJs.push({ src, dest });
+                return mockMix;
+            }),
             postCss: jest.fn((src: string, dest: string, plugins: any[]) => {
                 registeredPostCss.push({ src, dest, plugins });
                 return mockMix;
@@ -24,19 +29,19 @@ describe('Webpack Mix and Asset Pipeline Suite', () => {
         };
     });
 
-    test('webpack.mix.js configures frontend js and css bundles correctly', () => {
-        const webpackMixPath = path.resolve(__dirname, '../src/webpack.mix.js');
+    test('webpack.mix.ts configures frontend js and css bundles correctly', () => {
+        const webpackMixPath = path.resolve(__dirname, '../src/webpack.mix.ts');
         expect(fs.existsSync(webpackMixPath)).toBe(true);
 
         const mixCode = fs.readFileSync(webpackMixPath, 'utf8');
-        expect(mixCode).toContain("mix.js('resources/assets/js/app.js', 'public/js')");
+        expect(mixCode).toContain("mix.ts('resources/assets/js/app.ts', 'public/js')");
         expect(mixCode).toContain("postCss('resources/assets/css/app.css', 'public/css'");
 
         // Exercise the builder chain with mockMix
-        mockMix.js('resources/assets/js/app.js', 'public/js')
+        mockMix.ts('resources/assets/js/app.ts', 'public/js')
                .postCss('resources/assets/css/app.css', 'public/css', []);
 
-        expect(mockMix.js).toHaveBeenCalledWith('resources/assets/js/app.js', 'public/js');
+        expect(mockMix.ts).toHaveBeenCalledWith('resources/assets/js/app.ts', 'public/js');
         expect(mockMix.postCss).toHaveBeenCalledWith('resources/assets/css/app.css', 'public/css', []);
         expect(registeredJs).toHaveLength(1);
         expect(registeredPostCss).toHaveLength(1);

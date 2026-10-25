@@ -1,10 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
+    "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "isolatedModules": true,
     "outDir": ".dist",
+    "types": [
+      "node"
+    ],
     "rootDir": ".",
     "paths": {
       "~/*": [
@@ -12,21 +15,30 @@
       ]
     },
     "skipLibCheck": true,
-    "noImplicitAny": false,
-    "strict": false,
+    "noImplicitAny": true,
+    "strict": true,
     "esModuleInterop": true
   },
   "include": [
-    "./*.ts",
-    "app/**/*.ts",
-    "bootstrap/**/*.ts",
-    "config/**/*.ts",
-    "database/**/*.ts",
-    "routes/**/*.ts"
+    "**/*.ts"
   ],
   "exclude": [
+    "*test.ts",
     "node_modules",
     "test",
-    "build"
-  ]
+    ".dist",
+    "jest.*.ts",
+    "eslint.config.ts"
+  ],
+  "assets": {
+    "include": [
+      "package.json",
+      "assistant",
+      "public/**/*",
+      "resources/**/*"
+    ],
+    "exclude": [
+      "resources/assets/**"
+    ]
+  }
 }

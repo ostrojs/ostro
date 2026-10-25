@@ -1,6 +1,7 @@
+import { describe, test, expect, beforeAll, beforeEach, afterAll, afterEach, jest } from "@jest/globals";
 import '@ostro/support/helpers';
-import path from 'path';
-import fs from 'fs';
+import path from 'node:path';
+import fs from 'node:fs';
 import ConsoleKernel from '../src/app/console/kernel';
 import ModelMakeCommand from '@ostro/foundation/console/modelMakeCommand';
 import ConsoleMakeCommand from '@ostro/foundation/console/consoleMakeCommand';
@@ -32,12 +33,12 @@ describe('Assistant CLI Commands and Generator Suite', () => {
         tmpDir = path.join(__dirname, 'tmp_assistant_' + Date.now());
         fs.mkdirSync(tmpDir, { recursive: true });
 
-        (global as any).base_path = (p = '') => path.join(tmpDir, p);
-        (global as any).app_path = (p = '') => path.join(tmpDir, 'app', p);
-        (global as any).config_path = (p = '') => path.join(tmpDir, 'config', p);
-        (global as any).database_path = (p = '') => path.join(tmpDir, 'database', p);
-        (global as any).storage_path = (p = '') => path.join(tmpDir, 'storage', p);
-        (global as any).public_path = (p = '') => path.join(tmpDir, 'public', p);
+        (global as unknown as Record<string, unknown>).base_path = (p = '') => path.join(tmpDir, p);
+        (global as unknown as Record<string, unknown>).app_path = (p = '') => path.join(tmpDir, 'app', p);
+        (global as unknown as Record<string, unknown>).config_path = (p = '') => path.join(tmpDir, 'config', p);
+        (global as unknown as Record<string, unknown>).database_path = (p = '') => path.join(tmpDir, 'database', p);
+        (global as unknown as Record<string, unknown>).storage_path = (p = '') => path.join(tmpDir, 'storage', p);
+        (global as unknown as Record<string, unknown>).public_path = (p = '') => path.join(tmpDir, 'public', p);
 
         appMock = {
             basePath: (p = '') => path.join(tmpDir, p),

@@ -9,8 +9,7 @@
 |
 */
 
-import type { RouteContext, RouteRegistrar } from '@ostro/contracts/router';
-import type { IHttpContext } from '@ostro/contracts/foundation/httpContext';
+import type { HttpContext, RouteRegistrar } from '@ostro/contracts/router';
 
 /**
  * Register web routes for the application.
@@ -19,10 +18,9 @@ import type { IHttpContext } from '@ostro/contracts/foundation/httpContext';
  * @returns {void}
  */
 function webRoutes(route: RouteRegistrar): void {
-    route.get('/', function ({ view }: RouteContext): void {
+    route.get('/', function ({ view }: HttpContext): void {
         view('welcome');
     });
 }
 
-export type { RouteContext, RouteRegistrar, IHttpContext };
 export default webRoutes;

@@ -1,6 +1,7 @@
-import path from 'path';
-import fs from 'fs';
-import os from 'os';
+import { describe, test, expect, beforeAll, afterAll, jest } from "@jest/globals";
+import path from 'node:path';
+import fs from 'node:fs';
+import os from 'node:os';
 import ModelMakeCommand from '@ostro/foundation/console/modelMakeCommand';
 import ConsoleMakeCommand from '@ostro/foundation/console/consoleMakeCommand';
 import ControllerMakeCommand from '@ostro/router/console/controllerMakeCommand';

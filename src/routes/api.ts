@@ -9,9 +9,7 @@
 |
 */
 
-import type { RouteContext, RouteRegistrar } from '@ostro/contracts/router';
-import type { IHttpRequest } from '@ostro/contracts/http/request';
-import type { IHttpResponse } from '@ostro/contracts/http/response';
+import type { HttpContext, RouteRegistrar } from '@ostro/contracts/router';
 
 /**
  * Register API routes for the application.
@@ -20,10 +18,9 @@ import type { IHttpResponse } from '@ostro/contracts/http/response';
  * @returns {void}
  */
 function apiRoutes(route: RouteRegistrar): void {
-    route.get('user', async function ({ request, response }: RouteContext): Promise<void> {
-        response.send(await request.user());
+    route.get('user', async function ({ request, response }: HttpContext): Promise<void> {
+        response.send(await request.user?.());
     }).middleware('auth:api');
 }
 
-export type { RouteContext, RouteRegistrar, IHttpRequest, IHttpResponse };
 export default apiRoutes;

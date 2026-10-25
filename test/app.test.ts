@@ -1,5 +1,6 @@
+import { describe, test, expect, beforeEach, afterEach, jest } from "@jest/globals";
 import '@ostro/support/helpers';
-import path from 'path';
+import path from 'node:path';
 import Facade from '@ostro/support/facades/facade';
 import appInstance from '../src/bootstrap/app';
 import User from '../src/app/models/user';
@@ -90,8 +91,8 @@ describe('Ostro App Skeleton Unit Tests', () => {
 
     describe('Exceptions', () => {
         test('Handler exception class configuration', () => {
-            const origApp = (global as any).app;
-            (global as any).app = jest.fn((key: string) => {
+            const origApp = (global as unknown as Record<string, unknown>).app;
+            (global as unknown as Record<string, unknown>).app = jest.fn((key: string) => {
                 if (key === 'logger') {
                     return {
                         error: jest.fn(),
@@ -109,7 +110,7 @@ describe('Ostro App Skeleton Unit Tests', () => {
                 'password_confirmation'
             ]);
 
-            (global as any).app = origApp;
+            (global as unknown as Record<string, unknown>).app = origApp;
         });
     });
 

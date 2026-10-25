@@ -1,3 +1,4 @@
+import { describe, test, expect, beforeEach, afterEach, jest } from "@jest/globals";
 import '@ostro/support/helpers';
 import webRoutes from '../src/routes/web';
 import apiRoutes from '../src/routes/api';
@@ -93,7 +94,7 @@ describe('HTTP Routing, Middleware, Eloquent Model, and Database Suite', () => {
             const mockValidator = {
                 validate: jest.fn().mockResolvedValue({ name: 'Valid User' })
             };
-            (global as any).app = jest.fn((k) => (k === 'validation' ? mockValidator : null));
+            (global as unknown as Record<string, unknown>).app = jest.fn((k) => (k === 'validation' ? mockValidator : null));
 
             const req = { all: () => ({ name: 'Valid User' }) };
             const result = await ctrl.validate(req, { name: 'required' });

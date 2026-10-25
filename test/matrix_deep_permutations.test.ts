@@ -1,5 +1,4 @@
-import path from 'path';
-import fs from 'fs';
+import { describe, test, expect, beforeEach, afterEach, jest } from "@jest/globals";
 import Controller from '../src/app/http/controllers/controller';
 import Authenticate from '../src/app/http/middleware/authenticate';
 import RedirectIfAuthenticated from '../src/app/http/middleware/redirectIfAuthenticated';
@@ -35,7 +34,7 @@ describe('Deep Exhaustive Matrix: Combinatorial Permutations Across Ostro Core',
                         return Promise.reject(new Error(`Validation error for ${desc}`));
                     })
                 };
-                (global as any).app = jest.fn((k) => (k === 'validation' ? mockValidator : null));
+                (global as unknown as Record<string, unknown>).app = jest.fn((k) => (k === 'validation' ? mockValidator : null));
 
                 const req = { all: () => data };
                 if (shouldPass) {
@@ -56,7 +55,7 @@ describe('Deep Exhaustive Matrix: Combinatorial Permutations Across Ostro Core',
                         return Promise.reject(new Error(`Bag error for ${desc}`));
                     })
                 };
-                (global as any).app = jest.fn((k) => (k === 'validation' ? mockValidator : null));
+                (global as unknown as Record<string, unknown>).app = jest.fn((k) => (k === 'validation' ? mockValidator : null));
 
                 const req = { all: () => data };
                 if (shouldPass) {
@@ -134,10 +133,10 @@ describe('Deep Exhaustive Matrix: Combinatorial Permutations Across Ostro Core',
                 expect(user.getAttribute('name')).toBe(userData.name);
                 expect(user.getAttribute('email')).toBe(userData.email);
 
-                const hidden = (user as any).getHidden();
+                const hidden = (user as { getHidden: () => string[] }).getHidden();
                 expect(hidden).toEqual(['password', 'remember_token']);
 
-                const fillable = (user as any).getFillable();
+                const fillable = (user as { getFillable: () => string[] }).getFillable();
                 expect(fillable).toEqual(['name', 'email', 'password']);
             });
         });
@@ -240,15 +239,15 @@ describe('Deep Exhaustive Matrix: Combinatorial Permutations Across Ostro Core',
     describe('Database Seeder Matrix', () => {
         test('DatabaseSeeder executes run() cleanly', async () => {
             const seeder = new DatabaseSeeder();
-            const callSpy = jest.spyOn(seeder as any, 'call').mockResolvedValue(true);
+            const callSpy = jest.spyOn(seeder as unknown as { call: () => Promise<unknown> }, 'call').mockResolvedValue(true);
             await seeder.run();
             callSpy.mockRestore();
         });
 
         test('DatabaseSeeder propagates execution error when child seeder fails', async () => {
             const seeder = new DatabaseSeeder();
-            const callSpy = jest.spyOn(seeder as any, 'call').mockRejectedValue(new Error('Seeder deadlock'));
-            (seeder as any).call = callSpy;
+            const callSpy = jest.spyOn(seeder as unknown as { call: () => Promise<unknown> }, 'call').mockRejectedValue(new Error('Seeder deadlock'));
+            (seeder as unknown as { call: unknown }).call = callSpy;
             await expect(seeder.call('BrokenSeeder')).rejects.toThrow('Seeder deadlock');
         });
     });
@@ -279,13 +278,13 @@ describe('Deep Exhaustive Matrix: Combinatorial Permutations Across Ostro Core',
     // 9. Service Providers Matrix
     describe('Service Providers Matrix', () => {
         test('RouteServiceProvider registers and sets namespace', () => {
-            const provider = new RouteServiceProvider({} as any);
+            const provider = new RouteServiceProvider({} as unknown as import("../src/app").Application);
             expect(provider).toBeInstanceOf(RouteServiceProvider);
             expect(provider.$namespace).toBeDefined();
         });
 
         test('AppServiceProvider registers cleanly', () => {
-            const provider = new AppServiceProvider({} as any);
+            const provider = new AppServiceProvider({} as unknown as import("../src/app").Application);
             expect(provider).toBeInstanceOf(AppServiceProvider);
         });
     });

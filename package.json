@@ -1,6 +1,6 @@
 {
     "name": "@ostro/ostro",
-    "version": "2.0.0-alpha.5",
+    "version": "2.0.0-alpha.6",
     "description": "OstroJS MVC framework for NodeJS",
     "keywords": [
         "framework",
@@ -12,34 +12,39 @@
     "author": "amar",
     "license": "MIT",
     "scripts": {
-        "test": "npx c8 npx jest",
+        "test": "jest",
         "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
+        "development": "mix --mix-config=src/webpack.mix.ts",
+        "watch": "mix watch --mix-config=src/webpack.mix.ts",
+        "watch-poll": "mix watch --mix-config=src/webpack.mix.ts -- --watch-options-poll=1000",
+        "hot": "mix watch --hot --mix-config=src/webpack.mix.ts",
         "prod": "npm run production",
-        "build": "rm -rf build && mkdir -p build && node scripts/build.js",
+        "build": "npm run lint:check && rm -rf build && mkdir -p build && ts-node scripts/build.ts",
         "build:clean": "rm -rf build && npm run build",
         "server:start": "ts-node src/app.ts",
-        "clean": "rm -rf build coverage"
+        "clean": "rm -rf build coverage",
+        "lint:check": "tsc --noEmit"
     },
     "dependencies": {
-        "@ostro/framework": "^2.0.0-alpha.3"
+        "@ostro/framework": "^2.0.0-alpha.4"
     },
     "devDependencies": {
-        "@popperjs/core": "^2.10.2",
+        "@eslint/js": "^9.20.0",
+        "@ostro/builder": "^2.0.0-alpha.1",
+        "@popperjs/core": "^2.11.8",
+        "@types/jest": "^30.0.0",
         "@types/node": "^22.0.0",
-        "axios": "^1.10.0",
-        "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.21",
+        "axios": "^1.20.0",
+        "eslint": "^9.20.0",
+        "jest": "^30.5.2",
+        "laravel-mix": "^6.0.49",
         "postcss": "^8.1.14",
+        "ts-loader": "^9.5.2",
+        "webpack": "5.99.9",
+        "ts-jest": "^29.4.15",
         "ts-node": "^10.9.2",
         "typescript": "^5.8.0",
-        "@types/jest": "^30.0.0",
-        "c8": "^10.1.3",
-        "jest": "^30.5.2",
-        "ts-jest": "^29.4.15"
+        "typescript-eslint": "^8.24.0"
     },
     "engines": {
         "node": ">=18.0.0"
@@ -55,9 +60,6 @@
     "homepage": "https://github.com/ostrojs/ostro#readme",
     "main": "src/app.ts",
     "types": "src/app.ts",
-    "files": [
-        "build"
-    ],
     "overrides": {
         "sprintf-js": "^1.1.3",
         "braces": "^3.0.3",
