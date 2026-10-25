@@ -1,6 +1,6 @@
 {
     "name": "@ostro/ostro",
-    "version": "2.0.0-alpha.6",
+    "version": "2.0.0-alpha.5",
     "description": "OstroJS MVC framework for NodeJS",
     "keywords": [
         "framework",
@@ -26,7 +26,7 @@
         "lint:check": "tsc --noEmit"
     },
     "dependencies": {
-        "@ostro/framework": "^2.0.0-alpha.4"
+        "@ostro/framework": "^2.0.0-alpha.3"
     },
     "devDependencies": {
         "@eslint/js": "^9.20.0",

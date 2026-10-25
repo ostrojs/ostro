@@ -1,18 +1,27 @@
 #!/usr/bin/env node
 
-// Ensure ts-node is registered for TypeScript execution
-try {
-    const tsNode = require('ts-node');
-    if (!tsNode[Symbol.for('ts-node.register.instance')]) {
-        tsNode.register({ transpileOnly: true });
-    }
-} catch (_) { }
+const fs = require('fs');
+const path = require('path');
+require('@ostro/support/helpers');
 
-const appModule = require('./bootstrap/app');
+let appPath = './bootstrap/app';
+if (fs.existsSync(path.join(__dirname, 'bootstrap', 'app.js'))) {
+    appPath = './bootstrap/app';
+} else if (fs.existsSync(path.join(__dirname, '.dist', 'bootstrap', 'app.js'))) {
+    appPath = './.dist/bootstrap/app';
+} else if (fs.existsSync(path.join(__dirname, 'build', 'bootstrap', 'app.js'))) {
+    appPath = './build/bootstrap/app';
+} else if (fs.existsSync(path.join(__dirname, 'bootstrap', 'app.ts'))) {
+    try {
+        require('ts-node/register');
+    } catch (_) { }
+    appPath = './bootstrap/app';
+}
+
+const appModule = require(appPath);
 const app = appModule && appModule.default ? appModule.default : appModule;
 
-const kernel = app.make('@ostro/contracts/console/kernel');
-
+let kernel = app.make('@ostro/contracts/console/kernel');
 kernel.handle(
     process.argv.slice(2),
 );
