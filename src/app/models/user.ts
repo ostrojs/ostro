@@ -5,13 +5,13 @@ import Authenticatable from '@ostro/foundation/auth/user';
  */
 class User extends Authenticatable {
 
-    protected $fillable: string[] = [
+    public $fillable: string[] = [
         'name',
         'email',
         'password',
     ];
 
-    protected $hidden: string[] = [
+    public $hidden: string[] = [
         'password',
         'remember_token',
     ];
