@@ -40,7 +40,7 @@
         "laravel-mix": "^6.0.49",
         "postcss": "^8.1.14",
         "ts-loader": "^9.5.2",
-        "webpack": "5.99.9",
+        "webpack": "5.104.1",
         "ts-jest": "^29.4.15",
         "ts-node": "^10.9.2",
         "typescript": "^5.8.0",
