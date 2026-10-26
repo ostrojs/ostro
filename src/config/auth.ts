@@ -55,6 +55,8 @@ const config: AuthConfig = {
     | You can configure multiple providers if you have different user tables/models.
     | Each guard references one of these providers to fetch user info.
     |
+    | Available Drivers: "eloquent", "database"
+    |
     */
     'providers': {
 
@@ -62,6 +64,11 @@ const config: AuthConfig = {
             'driver': 'eloquent',        // Uses an ORM model to retrieve users
             'model': UserModel,          // Path to the User model class
         },
+
+        // 'users': {
+        //     'driver': 'database',     // Uses direct database queries to retrieve users
+        //     'table': 'users',         // Table containing user records
+        // },
 
     },
 
