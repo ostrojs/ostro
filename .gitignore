@@ -15,5 +15,5 @@ build
 /.dist
 AGY.md
 AYG.md
-
+storage
 package-lock.json
