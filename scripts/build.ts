@@ -27,12 +27,13 @@ export function preparePackage(pkgDir: string = process.cwd()): void {
             'lint:check': 'eslint .',
             'lint:fix': 'eslint . --fix',
             'dev': 'npm run development',
-            'development': 'mix --mix-config=webpack.mix.ts',
-            'watch': 'mix watch --mix-config=webpack.mix.ts',
-            'watch-poll': 'mix watch --mix-config=webpack.mix.ts -- --watch-options-poll=1000',
-            'hot': 'mix watch --hot --mix-config=webpack.mix.ts',
+            'development': 'vite build',
+            'watch': 'vite build --watch',
+            'watch-poll': 'vite build --watch',
+            'vite': 'vite',
             'prod': 'npm run production',
-            'build': 'npm run lint:check && ostro-build',
+            'production': 'npm run lint:check && ostro-build && vite build',
+            'build': 'npm run production',
             'build:clean': 'rm -rf .dist && npm run build',
             'server:start': 'ts-node app.ts',
             'test': 'npx jest'
@@ -81,6 +82,36 @@ export function preparePackage(pkgDir: string = process.cwd()): void {
 
     fs.writeFileSync(path.join(buildDir, 'package.json'), JSON.stringify(pubPkg, null, 2) + '\n');
 
+    // Generate .gitignore with unique rules
+    const gitignoreContent = [
+        '*.log',
+        '.DS_Store',
+        '.env',
+        '.env.example',
+        '/node_modules',
+        '/public/storage',
+        '/storage/*.key',
+        '/storage/framework',
+        '/storage/logs/',
+        '/storace/app',
+        'Thumbs.db',
+        '/public/hot',
+        '.env.backup',
+        'npm-debug.log',
+        'yarn-error.log',
+        'package-lock.json',
+        '/.codex',
+        '/.cursor/',
+        '/.idea',
+        '/.nova',
+        '/.vscode',
+        '/.zed',
+        ''
+    ].join('\n');
+
+    fs.writeFileSync(path.join(buildDir, '.gitignore'), gitignoreContent);
+    fs.writeFileSync(path.join(pkgDir, '.gitignore'), gitignoreContent);
+
     const copyRootFile = (file: string): void => {
         const src: string = path.join(pkgDir, file);
         if (fs.existsSync(src)) {
@@ -112,14 +143,13 @@ export function preparePackage(pkgDir: string = process.cwd()): void {
     copyRootFile('LICENSE.md');
     copyRootFile('LICENSE');
     copyRootFile('.env.example');
-    copyRootFile('.gitignore');
 
     // Copy framework components from src directly into build root (without src directory)
     copyFromSrc('storage');
     copyFromSrc('public');
     copyFromSrc('resources');
     copyFromSrc('assistant');
-    copyFromSrc('webpack.mix.ts');
+    copyFromSrc('vite.config.ts');
     copyFromSrc('test');
     copyFromSrc('jest.config.ts');
     copyFromSrc('eslint.config.ts');

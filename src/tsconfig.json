@@ -28,10 +28,12 @@
     "test",
     ".dist",
     "jest.*.ts",
-    "eslint.config.ts"
+    "eslint.config.ts",
+    "vite.config.ts"
   ],
   "assets": {
     "include": [
+      ".env",
       "package.json",
       "assistant",
       "public/**/*",
