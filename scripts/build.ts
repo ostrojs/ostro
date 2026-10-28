@@ -32,8 +32,8 @@ export function preparePackage(pkgDir: string = process.cwd()): void {
             'watch-poll': 'vite build --watch',
             'vite': 'vite',
             'prod': 'npm run production',
-            'production': 'npm run lint:check && ostro-build && vite build',
-            'build': 'npm run production',
+            'production': 'vite build',
+            'build': 'npm run lint:check && ostro-build',
             'build:clean': 'rm -rf .dist && npm run build',
             'server:start': 'ts-node app.ts',
             'test': 'npx jest'
