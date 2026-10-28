@@ -25,6 +25,8 @@
         "src/test",
         "build",
         "jest.config.ts",
-        "src/jest.config.ts"
+        "src/jest.config.ts",
+        "src/vite.config.ts",
+        "vite.config.ts"
     ]
 }
