@@ -84,18 +84,15 @@ export function preparePackage(pkgDir: string = process.cwd()): void {
 
     // Generate .gitignore with unique rules
     const gitignoreContent = [
-        '*.log',
-        '.DS_Store',
-        '.env',
-        '.env.backup',
         '/node_modules',
         '/public/build',
         '/public/hot',
         '/public/storage',
         '/storage/*.key',
-        '/storage/framework',
-        '/storage/logs/',
-        '/storage/app',
+        '.env',
+        '.env.backup',
+        '*.log',
+        '.DS_Store',
         'Thumbs.db',
         'npm-debug.log',
         'yarn-error.log',
