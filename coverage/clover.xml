@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1793259868466" clover="3.2.0">
+  <project timestamp="1793259868466" name="All files">
+    <metrics statements="89" coveredstatements="89" conditionals="2" coveredconditionals="2" methods="15" coveredmethods="15" elements="106" coveredelements="106" complexity="0" loc="89" ncloc="89" packages="11" files="15" classes="15"/>
+    <package name="app.console">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="kernel.ts" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/src/app/console/kernel.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="app.exceptions">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="handler.ts" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/src/app/exceptions/handler.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="6" type="stmt"/>
+        <line num="8" count="7" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="19" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="app.http">
+      <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="kernel.ts" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/src/app/http/kernel.ts">
+        <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="11" count="5" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="27" count="5" type="stmt"/>
+        <line num="43" count="5" type="stmt"/>
+        <line num="58" count="5" type="stmt"/>
+        <line num="64" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="app.http.controllers">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="controller.ts" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/src/app/http/controllers/controller.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="app.http.middleware">
+      <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="authenticate.ts" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/src/app/http/middleware/authenticate.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="1" count="7" type="stmt"/>
+        <line num="16" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="6" type="stmt"/>
+        <line num="22" count="7" type="stmt"/>
+      </file>
+      <file name="redirectIfAuthenticated.ts" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/src/app/http/middleware/redirectIfAuthenticated.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="7" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
+      </file>
+      <file name="verifyCsrfToken.ts" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/src/app/http/middleware/verifyCsrfToken.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="7" type="stmt"/>
+        <line num="8" count="9" type="stmt"/>
+        <line num="10" count="9" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+      </file>
+    </package>
+    <package name="app.models">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="user.ts" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/src/app/models/user.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="7" type="stmt"/>
+        <line num="8" count="38" type="stmt"/>
+        <line num="14" count="38" type="stmt"/>
+        <line num="21" count="7" type="stmt"/>
+      </file>
+    </package>
+    <package name="app.providers">
+      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="appServiceProvider.ts" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/src/app/providers/appServiceProvider.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="6" type="stmt"/>
+        <line num="10" count="6" type="stmt"/>
+      </file>
+      <file name="routeServiceProvider.ts" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/src/app/providers/routeServiceProvider.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="1" count="6" type="stmt"/>
+        <line num="2" count="6" type="stmt"/>
+        <line num="3" count="6" type="stmt"/>
+        <line num="17" count="8" type="stmt"/>
+        <line num="25" count="5" type="stmt"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="35" count="5" type="stmt"/>
+        <line num="44" count="5" type="stmt"/>
+        <line num="55" count="5" type="stmt"/>
+        <line num="62" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="bootstrap">
+      <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="app.ts" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/src/bootstrap/app.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="database.migrations">
+      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="2026_10_21_053500_create_users_tables.ts" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/src/database/migrations/2026_10_21_053500_create_users_tables.ts">
+        <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="17" count="7" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="20" count="5" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="34" count="6" type="stmt"/>
+        <line num="38" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="database.seeders">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="databaseSeeder.ts" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/src/database/seeders/databaseSeeder.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
+        <line num="19" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="routes">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="api.ts" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/src/routes/api.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+      </file>
+      <file name="web.ts" path="/Users/amarkumarsingh/Library/Mobile Documents/com~apple~CloudDocs/Projects/Nodejs/Npm Ostro Libs/origin/ostro/src/routes/web.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

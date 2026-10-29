@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "isolatedModules": true,
+    "outDir": ".dist",
+    "types": [
+      "node"
+    ],
+    "rootDir": ".",
+    "paths": {
+      "~/*": [
+        "./*"
+      ]
+    },
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "strict": true,
+    "esModuleInterop": true
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "*test.ts",
+    "node_modules",
+    "test",
+    ".dist",
+    "jest.*.ts",
+    "eslint.config.ts",
+    "vite.config.ts",
+    "webpack.mix.ts"
+  ],
+  "assets": {
+    "include": [
+      ".env",
+      "package.json",
+      "assistant",
+      "public/**/*",
+      "resources/**/*"
+    ],
+    "exclude": [
+      "resources/assets/**"
+    ]
+  }
+}

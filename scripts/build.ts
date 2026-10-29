@@ -84,13 +84,12 @@ export function preparePackage(pkgDir: string = process.cwd()): void {
 
     // Generate .gitignore with unique rules
     const gitignoreContent = [
+        '/.dist',
         '/node_modules',
-        '/public/build',
-        '/public/hot',
-        '/public/storage',
         '/storage/*.key',
         '.env',
         '.env.backup',
+        '.env.example',
         '*.log',
         '.DS_Store',
         'Thumbs.db',

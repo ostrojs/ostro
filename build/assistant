@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+// Ensure ts-node is registered for TypeScript execution
+try {
+    const tsNode = require('ts-node');
+    if (!tsNode[Symbol.for('ts-node.register.instance')]) {
+        tsNode.register({ transpileOnly: true });
+    }
+} catch (_) { }
+
+const appModule = require('./bootstrap/app');
+const app = appModule && appModule.default ? appModule.default : appModule;
+
+const kernel = app.make('@ostro/contracts/console/kernel');
+
+kernel.handle(
+    process.argv.slice(2),
+);

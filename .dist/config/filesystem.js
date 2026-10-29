@@ -1,0 +1,86 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const function_1 = require("@ostro/support/function");
+const config = {
+    /*
+    |--------------------------------------------------------------------------
+    | Default Filesystem Disk
+    |--------------------------------------------------------------------------
+    |
+    | Specifies the default disk to be used by the application when storing
+    | files. This should correspond to one of the disks defined in the
+    | 'disks' section below. This option allows easy switching of storage
+    | backends without changing the rest of your code.
+    |
+    */
+    'default': (0, function_1.env)('FILESYSTEM_DRIVER', 'local'),
+    /*
+    |--------------------------------------------------------------------------
+    | Default Cloud Filesystem Disk
+    |--------------------------------------------------------------------------
+    |
+    | Defines the default disk that should be used for cloud storage. This is
+    | useful if your application needs to work with both local and cloud-based
+    | storage services simultaneously.
+    |
+    */
+    'cloud': (0, function_1.env)('FILESYSTEM_CLOUD', 's3'),
+    /*
+    |--------------------------------------------------------------------------
+    | Filesystem Disks
+    |--------------------------------------------------------------------------
+    |
+    | Here you can configure multiple filesystem "disks", even multiple disks
+    | of the same driver. Each disk represents a particular storage location
+    | and driver combination. This makes it easy to interact with different
+    | storage systems like local storage, Azure, or Amazon S3 in a unified way.
+    |
+    | Supported Drivers: "local", "azure", "s3"
+    |
+    */
+    'disks': {
+        'local': {
+            'driver': 'local',
+            'root': (0, function_1.storage_path)('app'), // Path where files are stored locally
+            'encoding': 'utf8', // File encoding used when reading/writing
+        },
+        'session': {
+            'driver': 'local',
+            'root': (0, function_1.storage_path)('session'), // Separate local path for session files
+            'encoding': 'utf8',
+        },
+        'xslt': {
+            'driver': 'local',
+            'root': (0, function_1.storage_path)('xslt'), // Local path specifically for XSLT files
+            'encoding': 'utf8',
+        },
+        'public': {
+            'driver': 'local',
+            'root': (0, function_1.public_path)(''), // Public directory root for accessible files
+            'encoding': 'utf8',
+        },
+        'view': {
+            'driver': 'local',
+            'root': (0, function_1.view_path)(''), // Local path for storing view/template files
+            'encoding': 'utf8',
+        },
+        'azure': {
+            'driver': 'azure', // Azure Blob Storage driver
+            'key': (0, function_1.env)('FILESYSTEM_CLOUD_AZURE_KEY'),
+            'account': (0, function_1.env)('FILESYSTEM_CLOUD_AZURE_ACCOUNT'),
+            'container': (0, function_1.env)('FILESYSTEM_CLOUD_AZURE_CONTAINER'),
+            'url': (0, function_1.env)('FILESYSTEM_CLOUD_AZURE_URL'),
+        },
+        's3': {
+            'driver': 's3', // Amazon S3 driver
+            'key': (0, function_1.env)('AWS_ACCESS_KEY_ID'),
+            'secret': (0, function_1.env)('AWS_SECRET_ACCESS_KEY'),
+            'region': (0, function_1.env)('AWS_DEFAULT_REGION'),
+            'bucket': (0, function_1.env)('AWS_BUCKET'),
+            'url': (0, function_1.env)('AWS_URL'),
+            'endpoint': (0, function_1.env)('AWS_ENDPOINT'),
+            'use_path_style_endpoint': (0, function_1.env)('AWS_USE_PATH_STYLE_ENDPOINT', false),
+        },
+    },
+};
+exports.default = config;
