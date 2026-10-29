@@ -10,6 +10,7 @@ describe('Vite Configuration and Asset Pipeline Suite', () => {
         const viteCode = fs.readFileSync(viteConfigPath, 'utf8');
         expect(viteCode).toContain("import { defineConfig } from 'vite'");
         expect(viteCode).toContain("import ostro from '@ostro/vite'");
+        expect(viteCode).toContain("buildDirectory: 'build'");
         expect(viteCode).toContain("'resources/assets/css/app.css'");
         expect(viteCode).toContain("'resources/assets/js/app.ts'");
     });
