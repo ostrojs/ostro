@@ -29,7 +29,8 @@
     ".dist",
     "jest.*.ts",
     "eslint.config.ts",
-    "vite.config.ts"
+    "vite.config.ts",
+    "webpack.mix.ts"
   ],
   "assets": {
     "include": [

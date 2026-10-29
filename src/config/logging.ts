@@ -23,7 +23,7 @@ const config: LoggingConfig = {
     |
     | Contains configuration for all available log channels in your app.
     | Each channel represents a different way to handle and store log data.
-    | Laravel uses the Monolog library under the hood, allowing you to select
+    | OstroJS uses the logging library under the hood, allowing you to select
     | from drivers like single file, daily files, syslog, console, or stacks.
     |
     | Available Drivers: "single", "daily", "syslog", "custom", "stack", "console"

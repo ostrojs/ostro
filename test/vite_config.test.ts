@@ -28,4 +28,14 @@ describe('Vite Configuration and Asset Pipeline Suite', () => {
         expect(fs.existsSync(appCss)).toBe(true);
         expect(fs.existsSync(appTs)).toBe(true);
     });
+
+    test('webpack.mix.ts asset template is available for mix builder', () => {
+        const mixConfigPath = path.resolve(__dirname, '../src/webpack.mix.ts');
+        expect(fs.existsSync(mixConfigPath)).toBe(true);
+
+        const mixCode = fs.readFileSync(mixConfigPath, 'utf8');
+        expect(mixCode).toContain("require('@ostro/mix')");
+        expect(mixCode).toContain("mix.ts('resources/assets/js/app.ts', 'public/js')");
+        expect(mixCode).toContain(".postCss('resources/assets/css/app.css', 'public/css'");
+    });
 });

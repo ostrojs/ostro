@@ -87,21 +87,22 @@ export function preparePackage(pkgDir: string = process.cwd()): void {
         '*.log',
         '.DS_Store',
         '.env',
-        '.env.example',
+        '.env.backup',
         '/node_modules',
+        '/public/build',
+        '/public/hot',
         '/public/storage',
         '/storage/*.key',
         '/storage/framework',
         '/storage/logs/',
-        '/storace/app',
+        '/storage/app',
         'Thumbs.db',
-        '/public/hot',
-        '.env.backup',
         'npm-debug.log',
         'yarn-error.log',
         'package-lock.json',
         '/.codex',
         '/.cursor/',
+        '/.fleet',
         '/.idea',
         '/.nova',
         '/.vscode',
@@ -110,7 +111,16 @@ export function preparePackage(pkgDir: string = process.cwd()): void {
     ].join('\n');
 
     fs.writeFileSync(path.join(buildDir, '.gitignore'), gitignoreContent);
-    fs.writeFileSync(path.join(pkgDir, '.gitignore'), gitignoreContent);
+    fs.writeFileSync(path.join(buildDir, 'gitignore'), gitignoreContent);
+
+    // Write .npmignore in buildDir so npm does NOT use .gitignore to exclude database/.gitignore and storage/**/.gitignore
+    const npmignoreContent = [
+        'node_modules',
+        'coverage',
+        '.dist',
+        ''
+    ].join('\n');
+    fs.writeFileSync(path.join(buildDir, '.npmignore'), npmignoreContent);
 
     const copyRootFile = (file: string): void => {
         const src: string = path.join(pkgDir, file);
@@ -150,6 +160,7 @@ export function preparePackage(pkgDir: string = process.cwd()): void {
     copyFromSrc('resources');
     copyFromSrc('assistant');
     copyFromSrc('vite.config.ts');
+    copyFromSrc('webpack.mix.ts');
     copyFromSrc('test');
     copyFromSrc('jest.config.ts');
     copyFromSrc('eslint.config.ts');
@@ -160,6 +171,20 @@ export function preparePackage(pkgDir: string = process.cwd()): void {
     copyFromSrc('config');
     copyFromSrc('database');
     copyFromSrc('routes');
+
+    // npm-packlist strips '.gitignore' files by default. Mirror all .gitignore to gitignore so they are packed into the tarball
+    const mirrorGitignores = (dir: string): void => {
+        const entries = fs.readdirSync(dir, { withFileTypes: true });
+        for (const entry of entries) {
+            const fullPath = path.join(dir, entry.name);
+            if (entry.isDirectory()) {
+                mirrorGitignores(fullPath);
+            } else if (entry.name === '.gitignore') {
+                fs.copyFileSync(fullPath, path.join(dir, 'gitignore'));
+            }
+        }
+    };
+    mirrorGitignores(buildDir);
 
     console.log(`[build] Successfully prepared ${pubPkg.name}@${pubPkg.version} inside build/`);
 }

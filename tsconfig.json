@@ -27,6 +27,8 @@
         "jest.config.ts",
         "src/jest.config.ts",
         "src/vite.config.ts",
-        "vite.config.ts"
+        "vite.config.ts",
+        "src/webpack.mix.ts",
+        "webpack.mix.ts"
     ]
 }
